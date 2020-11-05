@@ -2,7 +2,7 @@
 
 ---
 
-本节将介绍如何在项目中使用 vue-amap。
+本节将介绍如何在项目中使用 vue-bmap。
 
 
 ## 1 - 项目结构
@@ -37,7 +37,7 @@ index.html
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>vue-amap-starter</title>
+    <title>vue-bmap-starter</title>
   </head>
   <body>
     <div id="app"></div>
@@ -49,14 +49,14 @@ index.html
 package.json
 ```json
 {
-  "name": "vue-amap-starter",
+  "name": "vue-bmap-starter",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --port 9876",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue-amap": "^0.0.8",
-    "vue": "^2.0.5"
+    "vue-bmap-gl": "^0.0.1",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -129,20 +129,19 @@ if (process.env.NODE_ENV === 'production') {
 }
 ```
 
-## 2 - 引入vue-amap
+## 2 - 引入vue-bmap-gl
 
 main.js
 ```javascript
 import Vue from 'vue';
-import VueAMap from 'vue-amap';
+import VueBMap from 'vue-bmap-gl';
 import App from './App.vue';
 
-Vue.use(VueAMap);
-VueAMap.initBMapApiLoader({
-  key: 'your amap key',
-  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
-  // 默认高德 sdk 版本为 1.4.4
-  v: '1.4.4'
+Vue.use(VueBMap);
+VueBMap.initBMapApiLoader({
+  ak: 'your bmap key',
+  // 默认百度 sdk 版本为 1.0
+  v: '1.0'
 });
 
 new Vue({
@@ -156,8 +155,8 @@ App.vue
 <template>
   <div id="app">
     <h3 class="title">{{ msg }}</h3>
-    <div class="amap-wrapper">
-      <el-amap class="amap-box" :vid="'amap-vue'"></el-amap>
+    <div class="bmap-wrapper">
+      <el-bmap class="bmap-box" :vid="'bmap-vue'"></el-bmap>
     </div>
   </div>
 </template>
@@ -166,14 +165,14 @@ App.vue
 export default {
   data () {
     return {
-      msg: 'vue-amap向你问好！'
+      msg: 'vue-bmap向你问好！'
     }
   }
 }
 </script>
 
 <style>
-.amap-wrapper {
+.bmap-wrapper {
   width: 500px;
   height: 500px;
 }
