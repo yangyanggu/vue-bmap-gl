@@ -8,7 +8,7 @@ export function toSize(arr) {
 
 export function pixelTo(pixel) {
   if (Array.isArray(pixel)) return pixel;
-  return [pixel.getX(), pixel.getY()];
+  return [pixel.x, pixel.y];
 }
 
 export function toLngLat(arr) {
@@ -16,9 +16,8 @@ export function toLngLat(arr) {
 }
 
 export function lngLatTo(lngLat) {
-  if (!lngLat) return;
-  if (Array.isArray(lngLat)) return lngLat.slice();
-  return [lngLat.getLng(), lngLat.getLat()];
+  if (!lngLat) return null;
+  return [lngLat.lng, lngLat.lat];
 }
 
 /**

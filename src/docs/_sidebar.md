@@ -8,7 +8,7 @@
 
 - 遮盖物
  - [点坐标](zh-cn/coverings/marker)
- - [图片覆盖物](zh-cn/coverings/ground-overlay)
+ - [地面叠加层](zh-cn/coverings/ground-overlay)
  - [圆](zh-cn/coverings/circle)
  - [多边形](zh-cn/coverings/polygon)
  - [折线](zh-cn/coverings/polyline)

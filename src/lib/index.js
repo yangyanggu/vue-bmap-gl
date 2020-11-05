@@ -11,8 +11,9 @@ import BMap from './components/bmap.vue';
 import BMapMarker from './components/bmap-marker.vue';
 import BMapGroupOverlay from './components/bmap-ground-overlay';
 import BMapInfoWindow from './components/bmap-info-window.vue';
+import BMapCircle from './components/bmap-circle.vue';
 /* import AMapSearchBox from './components/amap-search-box.vue';
-import AMapCircle from './components/amap-circle.vue';
+
 import AMapGroupImage from './components/amap-ground-image.vue';
 
 import AMapPolyline from './components/amap-polyline.vue';
@@ -31,6 +32,7 @@ let components = [
   BMap,
   BMapMarker,
   BMapGroupOverlay,
+  BMapCircle,
   BMapInfoWindow
   /* AMapSearchBox,
   AMapCircle,
