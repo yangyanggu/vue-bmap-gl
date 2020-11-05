@@ -39,6 +39,9 @@ export default {
           return toSize(arr);
         },
         icon(options) {
+          if (!options) {
+            return null;
+          }
           const {url, size = [16, 16], imageSize, imageOffset = [-8, -8], anchor = [0, 0]} = options;
           return new BMapGL.Icon(url, toSize(size), {
             imageOffset: toSize(imageOffset),
@@ -47,6 +50,9 @@ export default {
           });
         },
         label(options) {
+          if (!options) {
+            return null;
+          }
           const { content = '', offset = [0, 0], enableMassClear, style, title = '', zIndex } = options;
           let label = new BMapGL.Label(content, {
             title: title,
