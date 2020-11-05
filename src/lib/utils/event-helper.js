@@ -49,7 +49,7 @@ class EventHelper {
     let listeners = this._listener.get(instance);
     if (!listeners) return;
     Object.keys(listeners).map(eventName => {
-      instance.clearEvents(eventName);
+      instance.removeEventListener(eventName);
     });
   }
 };

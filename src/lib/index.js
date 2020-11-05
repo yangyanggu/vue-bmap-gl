@@ -10,10 +10,11 @@ import {initBMapApiLoader} from './services/injected-bmap-api-instance';
 import BMap from './components/bmap.vue';
 import BMapMarker from './components/bmap-marker.vue';
 import BMapGroupOverlay from './components/bmap-ground-overlay';
+import BMapInfoWindow from './components/bmap-info-window.vue';
 /* import AMapSearchBox from './components/amap-search-box.vue';
 import AMapCircle from './components/amap-circle.vue';
 import AMapGroupImage from './components/amap-ground-image.vue';
-import AMapInfoWindow from './components/amap-info-window.vue';
+
 import AMapPolyline from './components/amap-polyline.vue';
 import AMapPolygon from './components/amap-polygon.vue';
 import AMapText from './components/amap-text.vue';
@@ -29,7 +30,8 @@ import createCustomComponent from './adapter/custom-adapter';
 let components = [
   BMap,
   BMapMarker,
-  BMapGroupOverlay
+  BMapGroupOverlay,
+  BMapInfoWindow
   /* AMapSearchBox,
   AMapCircle,
   AMapGroupImage,
