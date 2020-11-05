@@ -12,12 +12,12 @@ import BMapMarker from './components/bmap-marker.vue';
 import BMapGroupOverlay from './components/bmap-ground-overlay';
 import BMapInfoWindow from './components/bmap-info-window.vue';
 import BMapCircle from './components/bmap-circle.vue';
+import BMapPolygon from './components/bmap-polygon.vue';
 /* import AMapSearchBox from './components/amap-search-box.vue';
 
 import AMapGroupImage from './components/amap-ground-image.vue';
 
 import AMapPolyline from './components/amap-polyline.vue';
-import AMapPolygon from './components/amap-polygon.vue';
 import AMapText from './components/amap-text.vue';
 import AMapBezierCurve from './components/amap-bezier-curve.vue';
 import AMapCircleMarker from './components/amap-circle-marker.vue';
@@ -33,6 +33,7 @@ let components = [
   BMapMarker,
   BMapGroupOverlay,
   BMapCircle,
+  BMapPolygon,
   BMapInfoWindow
   /* AMapSearchBox,
   AMapCircle,
