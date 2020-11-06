@@ -16,4 +16,4 @@ cache:
 install:
   - npm i
 script:
-  - npm run lib && npm run build && sh ./scripts/git-page.sh
+  - npm run lib && npm run build
