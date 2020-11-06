@@ -3,7 +3,6 @@ import { BMapManager } from 'vue-bmap-gl';
 
 describe('BMap.Map', function() {
 
-
   describe('#init-instance', function() {
     it('should init bmap instance', (done) => {
       (new Vue({

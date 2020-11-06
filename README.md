@@ -3,9 +3,9 @@
 </p>
 
 # vue-bmap-gl
-[![Build Status](https://travis-ci.org/ElemeFE/vue-amap.svg?branch=master)](https://travis-ci.org/ElemeFE/vue-amap)
-[![npm package](https://img.shields.io/npm/v/vue-amap.svg)](https://gitee.com/guyangyang/vue-bmap-gl)
-[![NPM downloads](http://img.shields.io/npm/dm/vue-amap.svg)](https://gitee.com/guyangyang/vue-bmap-gl)
+[![Build Status](https://travis-ci.org/a407042815/vue-bmap-gl.svg?branch=master)](https://travis-ci.org/ElemeFE/vue-amap)
+[![npm package](https://img.shields.io/npm/v/vue-bmap-gl.svg)](https://gitee.com/guyangyang/vue-bmap-gl)
+[![NPM downloads](http://img.shields.io/npm/dm/vue-bmap-gl.svg)](https://gitee.com/guyangyang/vue-bmap-gl)
 [![license](https://img.shields.io/github/license/elemefe/vue-amap.svg?style=flat-square)](https://gitee.com/guyangyang/vue-bmap-gl)
 [![Gitee stars](https://gitee.com/guyangyang/vue-bmap-gl/badge/star.svg?theme=white)](https://gitee.com/guyangyang/vue-bmap-gl/stargazers)
 
