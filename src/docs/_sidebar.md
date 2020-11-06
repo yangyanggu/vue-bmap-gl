@@ -12,7 +12,7 @@
  - [圆](zh-cn/coverings/circle)
  - [多边形](zh-cn/coverings/polygon)
  - [折线](zh-cn/coverings/polyline)
- - [文本](zh-cn/coverings/text)
+ - [文本标注](zh-cn/coverings/label)
  - [贝塞尔曲线](zh-cn/coverings/bezier-curve)
  - [圆点标记](zh-cn/coverings/circle-marker)
  - [椭圆](zh-cn/coverings/ellipse)

@@ -3,6 +3,7 @@ export function toPixel(arr) {
 }
 
 export function toSize(arr) {
+  if (!arr || !Array.isArray(arr)) return null;
   return new BMapGL.Size(arr[0], arr[1]);
 }
 
@@ -12,6 +13,7 @@ export function pixelTo(pixel) {
 }
 
 export function toLngLat(arr) {
+  if (!arr || !Array.isArray(arr)) return null;
   return new BMapGL.Point(arr[0], arr[1]);
 }
 

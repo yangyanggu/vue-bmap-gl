@@ -41,6 +41,11 @@ export default {
     $$getPath() {
       return this.$bmapComponent.getPath().map(lngLatTo);
     }
+  },
+  destroyed() {
+    if (this.$bmapComponent && this.$bmapComponent.getMap()) {
+      this.$bmapComponent.getMap().removeOverlay(this.$bmapComponent);
+    }
   }
 };
 </script>

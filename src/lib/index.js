@@ -14,11 +14,9 @@ import BMapInfoWindow from './components/bmap-info-window.vue';
 import BMapCircle from './components/bmap-circle.vue';
 import BMapPolygon from './components/bmap-polygon.vue';
 import BMapPolyline from './components/bmap-polyline.vue';
+import BMapLabel from './components/bmap-label.vue';
 /* import AMapSearchBox from './components/amap-search-box.vue';
-
 import AMapGroupImage from './components/amap-ground-image.vue';
-
-import AMapText from './components/amap-text.vue';
 import AMapBezierCurve from './components/amap-bezier-curve.vue';
 import AMapCircleMarker from './components/amap-circle-marker.vue';
 import AMapEllipse from './components/amap-ellipse.vue';
@@ -35,6 +33,7 @@ let components = [
   BMapCircle,
   BMapPolygon,
   BMapPolyline,
+  BMapLabel,
   BMapInfoWindow
   /* AMapSearchBox,
   AMapCircle,

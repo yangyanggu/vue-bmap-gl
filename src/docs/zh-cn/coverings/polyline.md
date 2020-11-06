@@ -65,7 +65,7 @@
 vid | String | 组件的ID。
 geodesic | Boolean | 是否开启大地线模式，true时，两点连线将以大地线的形式。默认为false
 clip | Boolean | 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
-
+events | Object | 事件，key值为事件名称，提供默认的init事件，用于初始化后的操作.具体事件说明见下面的事件列表
 
 
 ## 动态属性

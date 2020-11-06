@@ -15,11 +15,6 @@
       'events',
       'onceEvents'
     ],
-    destroyed() {
-      if (this.$bmapComponent && this.$bmapComponent.getMap()) {
-        this.$bmapComponent.getMap().removeOverlay(this.$bmapComponent);
-      }
-    },
     data() {
       return {
         propsRedirect: {
@@ -40,6 +35,11 @@
       __initComponent(options) {
         this.$bmapComponent = new BMapGL.GroundOverlay(options.bounds, options);
         options.map.addOverlay(this.$bmapComponent);
+      }
+    },
+    destroyed() {
+      if (this.$bmapComponent && this.$bmapComponent.getMap()) {
+        this.$bmapComponent.getMap().removeOverlay(this.$bmapComponent);
       }
     }
   };

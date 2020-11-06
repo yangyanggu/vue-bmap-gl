@@ -1,32 +1,32 @@
-<template>
-</template>
 <script>
 import registerMixin from '../mixins/register-component';
-import {lngLatTo, toLngLat} from '../utils/convert-helper';
+import {toLngLat, toSize} from '../utils/convert-helper';
+
 export default {
-  name: 'el-bmap-polygon',
+  name: 'el-bmap-label',
   mixins: [registerMixin],
   props: [
     'vid',
-    'path',
-    'strokeColor',
-    'strokeOpacity',
-    'strokeWeight',
-    'strokeStyle',
-    'fillColor',
-    'fillOpacity',
+    'content',
+    'position',
+    'offset',
+    'title',
+    'labelStyle',
     'enableMassClear',
-    'enableEditing',
-    'enableClicking',
     'events',
     'onceEvents'
   ],
   data() {
     return {
+      propsRedirect: {
+        labelStyle: 'style'
+      },
       converters: {
-        path(arr) {
-          if (!Array.isArray(arr)) return [];
-          return arr.map(toLngLat);
+        position(arr) {
+          return toLngLat(arr);
+        },
+        offset(arr) {
+          return toSize(arr);
         }
       },
       handlers: {
@@ -35,11 +35,11 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$bmapComponent = new BMapGL.Polygon(options.path, options);
+      this.$bmapComponent = new BMapGL.Label(options.content, options);
       options.map.addOverlay(this.$bmapComponent);
-    },
-    $$getPath() {
-      return this.$bmapComponent.getPath().map(lngLatTo);
+      if (options.style) {
+        this.$bmapComponent.setStyle(options.style);
+      }
     }
   },
   destroyed() {
