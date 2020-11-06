@@ -1,6 +1,6 @@
 {
   "name": "vue-bmap-gl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue bmap-gl",
   "main": "./dist/index.js",
   "sideEffects": false,
@@ -11,10 +11,11 @@
     "dev": "node build/dev-server.js --content-base dist/",
     "build": "node build/build.js",
     "lib": "npm run test && set LIB_ENV=lib && node build/lib.js",
+    "libWithOutTest": "set LIB_ENV=lib && node build/lib.js",
     "start": "node build/dev-server.js",
     "lint": "eslint src",
     "test": "npm run lint && npm run test:unit",
-    "prepublishOnly": "npm run lib",
+    "prepublishOnly": "npm run libWithOutTest",
     "test:unit": "karma  start test/unit/karma.conf.js --single-run",
     "test:dev": "karma  start test/unit/karma.conf.js --single-run=false"
   },
