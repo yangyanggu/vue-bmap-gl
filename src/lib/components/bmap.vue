@@ -14,14 +14,29 @@ export default {
   name: 'el-bmap',
   mixins: [registerMixin],
   props: [
-  //  add v1.4.0 new feature
     'vid',
     'events',
     'center',
     'zoom',
     'minZoom',
     'maxZoom',
-    'bmapManager'  // 地图管理 manager
+    'mapType',
+    'enableAutoResize',
+    'enableDragging',
+    'enableInertialDragging',
+    'enableScrollWheelZoom',
+    'enableContinuousZoom',
+    'enableResizeOnCenter',
+    'enableDoubleClickZoom',
+    'enableKeyboard',
+    'enablePinchToZoom',
+    'enableRotateGestures',
+    'enableTiltGestures',
+    'bounds',
+    'draggingCursor',
+    'mapStyleV2',
+    'bmapManager',  // 地图管理 manager
+    'events'
   ],
 
   beforeCreate() {
@@ -52,10 +67,6 @@ export default {
   },
 
   methods: {
-
-    addMapControls() {
-
-    },
 
     createMap() {
       this._loadPromise.then(() => {

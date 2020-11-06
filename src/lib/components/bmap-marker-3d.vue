@@ -7,22 +7,17 @@ import {
 } from '../utils/convert-helper';
 
 export default {
-  name: 'el-bmap-marker',
+  name: 'el-bmap-marker-3d',
   mixins: [registerMixin],
   props: [
     'vid',
+    'height',
     'position',
-    'offset',
+    'size',
     'icon',
-    'enableMassClear',
-    'enableDragging',
-    'enableClicking',
-    'raiseOnDrag',
-    'draggingCursor',
-    'visible',
-    'rotation',
-    'title',
-    'label',
+    'shape',
+    'fillColor',
+    'fillOpacity',
     'events',
     'onceEvents'
   ],
@@ -31,9 +26,6 @@ export default {
       converters: {
         position(arr) {
           return toLngLat(arr);
-        },
-        offset(arr) {
-          return toSize(arr);
         },
         icon(options) {
           if (!options) {
@@ -45,24 +37,6 @@ export default {
             anchor: toSize(anchor),
             imageSize: (imageSize || toSize(size))
           });
-        },
-        label(options) {
-          if (!options) {
-            return null;
-          }
-          const { content = '', offset = [0, 0], enableMassClear, style, title = '', zIndex } = options;
-          let label = new BMapGL.Label(content, {
-            title: title,
-            offset: toSize(offset),
-            enableMassClear: (enableMassClear === undefined ? true : enableMassClear)
-          });
-          if (style) {
-            label.setStyle(style);
-          }
-          if (zIndex !== undefined) {
-            label.setZIndex(zIndex);
-          }
-          return label;
         }
       },
       handlers: {
@@ -73,7 +47,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$bmapComponent = new BMapGL.Marker(options.position, options);
+      this.$bmapComponent = new BMapGL.Marker3D(options.position, options.height, options);
       options.map.addOverlay(this.$bmapComponent);
     },
 
@@ -81,8 +55,8 @@ export default {
       return lngLatTo(this.$bmapComponent.getPosition());
     },
 
-    $$getOffset() {
-      return pixelTo(this.$bmapComponent.getOffset());
+    $$getSize() {
+      return pixelTo(this.$bmapComponent.getSize());
     }
   },
   render(h) {

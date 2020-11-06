@@ -72,20 +72,7 @@
 ---|---|---|
 vid | String | 地图容器节点的ID。
 bmapManager| BMapManager | 地图管理对象。
-defaultCursor | String | 地图默认鼠标样式。参数defaultCursor应符合CSS的cursor属性规范。
-animateEnable | Boolean | 地图平移过程中是否使用动画，默认为true，即使用动画。
-isHotspot | Boolean | 是否开启地图热点，默认false 不打开。
-rotateEnable | Boolean  | 地图是否可旋转，默认false。
-resizeEnable | Boolean  | 是否监控地图容器尺寸变化，默认值为false。
-showIndoorMap | Boolean  | 	是否在有矢量底图的时候自动展示室内地图，PC端默认是true，移动端默认是false。
-expandZoomRange | Boolean | 	是否支持可以扩展最大缩放级别.设置为true的时候，zooms的最大级别在PC上可以扩大到20级，移动端还是高清19/非高清20。
-dragEnable | Boolean  | 	地图是否可通过鼠标拖拽平移，默认为true。
-zoomEnable | Boolean  | 	地图是否可缩放，默认值为true。
-doubleClickZoom | Boolean  | 	地图是否可通过双击鼠标放大地图，默认为true。
-keyboardEnable | Boolean  | 	地图是否可通过键盘控制，方向键控制地图平移，"+"和"-"可以控制地图的缩放，Ctrl+“→”顺时针旋转，Ctrl+“←”逆时针旋转，默认为true。
-jogEnable | Boolean  | 	地图是否使用缓动效果，默认值为true。
-scrollWheel | Boolean  | 	地图是否可通过鼠标滚轮缩放浏览，默认为true。
-touchZoom | Boolean  | 	地图在移动终端上是否可通过多点触控缩放浏览地图，默认为true。
+events | Object | 事件
 
 ## 动态属性
 
@@ -93,13 +80,27 @@ touchZoom | Boolean  | 	地图在移动终端上是否可通过多点触控缩�
 
 名称 | 类型 | 说明
 ---|---|---|
-zooms | Array | 地图显示的缩放级别范围，在PC上，默认范围[3,18]，取值范围[3-18]；在移动设备上，默认范围[3-19]，取值范围[3-19]
+zoom | Number | 地图当前缩放级别
+minZoom | Number | 地图允许展示的最小级别
+maxZoom | Number | 地图允许展示的最大级别
 center | Array | 地图中心点坐标值
-labelzIndex | Number | 地图标注显示顺序
-lang | String | 地图语言类型 默认：zh_cn，可选值：zh_cn：中文简体，en：英文，zh_en：中英文对照
-mapStyle	| String |	设置地图显示样式，目前支持normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)四种
+mapType | MapTypeId | 地图类型,可选值：BMAP_NORMAL_MAP（普通街道视图） 、BMAP_EARTH_MAP（地球卫星视图） 
+enableAutoResize | Boolean | 开启自动适应地图容器变化，默认启用
+enableDragging	| Boolean |	地图拖拽，默认启用
+enableInertialDragging | Boolean | 地图惯性拖拽，默认禁用
+enableScrollWheelZoom | Boolean | 允许地图可被鼠标滚轮缩放，默认启用
+enableContinuousZoom | Boolean | 双击平滑缩放效果，默认启用
+enableResizeOnCenter | Boolean | 图区resize中心点不变
+enableDoubleClickZoom | Boolean | 地图双击缩放，左键双击放大、右键双击缩小
+enableKeyboard | Boolean | 键盘操作，默认禁用。键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home和End键会使地图平移其1/2的大小。+、-键会使地图放大或缩小一级
+enablePinchToZoom | Boolean | 双指缩放地图
+enableRotateGestures | Boolean | 允许通过手势旋转地图
+enableTiltGestures | Boolean | 允许通过手势倾斜地图
+bounds | [Bounds](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_webgl_1_0.html#a1b2) | 地图当前视野范围的矩形区域，以地理坐标表示
+draggingCursor | String | 拖拽地图时的鼠标指针样式
+mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象
 
-## AmapManager
+## BmapManager
 
 用于获取地图实例，以及获得地图内组件的实例。
 
@@ -113,7 +114,7 @@ getChildInstance| vid | instance | 返回 vid 对应的组件实例
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | [AMap.Map](http://lbs.amap.com/api/javascript-api/reference/map) | 获取地图实例
+$$getInstance() | [BMapGL.Map](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_webgl_1_0.html#a0b0) | 获取地图实例
 $$getCenter()   | [lng: Number, lat: Number] | 获取地图中心
 
 
@@ -121,29 +122,37 @@ $$getCenter()   | [lng: Number, lat: Number] | 获取地图中心
 
 事件 | 参数 | 说明
 ---|---|---|
-complete | |地图图块加载完成后触发事件
-click |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标左键单击事件 相关示例
-dblclick |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标左键双击事件
-mapmove | |地图平移时触发事件
-hotspotclick |{type,lnglat,name,id} |鼠标点击热点时触发（自v1.3 新增）
-hotspotover |{type,lnglat,name,id} |鼠标滑过热点时触发（自v1.3 新增）
-hotspotout |{type,lnglat,name,id} |鼠标移出热点时触发（自v1.3 新增）
-movestart | |地图平移开始时触发
-moveend | |地图平移结束后触发。如地图有拖拽缓动效果，则在缓动结束后触发
-zoomchange | |地图缩放级别更改后触发
-zoomstart | |缩放开始时触发
-zoomend | |缩放停止时触发
-mousemove |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标在地图上移动时触发
-mousewheel |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标滚轮开始缩放地图时触发
-mouseover |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标移入地图容器内时触发
-mouseout |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标移出地图容器时触发
-mouseup |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标在地图上单击抬起时触发
-mousedown |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标在地图上单击按下时触发
-rightclick |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |鼠标右键单击事件
-dragstart | |开始拖拽地图时触发
-dragging | |拖拽地图过程中触发
-dragend | |停止拖拽地图时触发。如地图有拖拽缓动效果，则在拽停止，缓动开始前触发
-resize | |地图容器大小改变事件
-touchstart |[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent) |触摸开始时触发事件，仅适用移动设备
-touchmove	|[MapsEvent](http://lbs.amap.com/api/javascript-api/reference/event/#MapsEvent)	|触摸移动进行中时触发事件，仅适用移动设备
-touchend | |
+init | | 组件初始化成功后调用
+load | {type, target, pixel, point, zoom} | 调用Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块
+click | {type, target, point, pixel, overlay} | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick
+dblclick | {type, target, pixel, point} | 鼠标双击地图时会触发此事件
+rightdblclick | {type, target, point, pixel, overlay} | 右键双击地图时触发此事件
+maptypechange | {type, target} | 地图类型发生变化时触发此事件
+mousemove | {type, target, point, pixel, overlay} | 鼠标在地图上移动时触发
+mouseover | {type, target} | 鼠标移入地图区域时触发此事件
+mouseout | {type, target} | 鼠标移出地图区域时触发此事件
+movestart | {type, target} | 地图移动开始时触发此事件
+moving | {type, target} | 地图移动过程中触发此事件
+moveend | {type, target} | 地图移动结束时触发此事件
+zoomstart | {type, target} | 地图更改缩放级别开始时触发触发此事件
+zoomend | {type, target} | 地图更改缩放级别结束时触发触发此事件
+addoverlay | {type, target} | 当使用Map.addOverlay()方法向地图中添加单个覆盖物时会触发此事件
+addcontrol | {type, target} | 当使用Map.addControl()方法向地图中添加单个控件时会触发此事件
+removecontrol | {type, target} | 当使用Map.removeControl()方法移除单个控件时会触发此事件
+removeoverlay | {type, target} | 当使用Map.removeOverlay()方法移除单个覆盖物时会触发此事件
+clearoverlays | {type, target} | 当使用Map.clearOverlays()方法一次性移除全部覆盖物时会触发此事件
+dragstart | {type, target, pixel, point} | 开始拖拽地图时触发
+dragging | {type, target, pixel, point} | 拖拽地图过程中触发
+dragend | {type, target, pixel, point} | 停止拖拽地图时触发
+addtilelayer | {type, target} | 添加一个自定义地图图层时触发此事件
+removetilelayer | {type, target} | 移除一个自定义地图图层时触发此事件
+load | {type, target, pixel, point, zoom} | 调用Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块
+resize | {type, target, size} | 地图可视区域大小发生变化时会触发此事件
+hotspotclick | {type, target, spots} | 点击热区时触发此事件
+hotspotover | {type, target, spots} | 鼠标移至热区时触发此事件
+hotspotout | {type, target, spots} | 鼠标移出热区时触发此事件
+tilesloaded | {type, target} | 当地图所有图块完成加载时触发此事件
+touchstart | {type, target, point,pixel} | 触摸开始时触发此事件，仅适用移动设备
+touchmove | {type, target, point,pixel} | 触摸移动时触发此事件，仅适用移动设备
+touchend | {type, target, point,pixel} | 触摸结束时触发此事件，仅适用移动设备
+longpress | {type, target, point,pixel} | 长按事件，仅适用移动设备
