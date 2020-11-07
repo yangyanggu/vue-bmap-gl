@@ -29,6 +29,7 @@ npm install -S vue-bmap-gl
 ```javascript
 // 引入vue-bmap-gl
 import VueBMap from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css';
 Vue.use(VueBMap);
 
 // 初始化vue-amap

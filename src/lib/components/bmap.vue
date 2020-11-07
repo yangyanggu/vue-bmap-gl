@@ -92,7 +92,7 @@ export default {
 .el-vue-bmap-container {
   height: 100%;
 
-  .el-vue-bmap-container .el-vue-bmap {
+  .el-vue-bmap {
     height: 100%;
   }
 }
