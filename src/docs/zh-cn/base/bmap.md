@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-bmap ref="map" vid="amapDemo" :min-zoom="10" :max-zoom="11" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
+      <el-bmap ref="map" vid="amapDemo" :min-zoom="10" :max-zoom="11" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
       </el-bmap>
 
       <div class="toolbar">
@@ -36,6 +36,8 @@
           bmapManager,
           zoom: 12,
           center: [121.59996, 31.197646],
+          tilt: 60,
+          heading: 0,
           events: {
             init: (o) => {
               console.log(o.getCenter())
@@ -84,6 +86,8 @@ zoom | Number | 地图当前缩放级别
 minZoom | Number | 地图允许展示的最小级别
 maxZoom | Number | 地图允许展示的最大级别
 center | Array | 地图中心点坐标值
+tilt | Number | 倾斜角度
+heading | Number | 旋转角度
 mapType | MapTypeId | 地图类型,可选值：BMAP_NORMAL_MAP（普通街道视图） 、BMAP_EARTH_MAP（地球卫星视图） 
 enableAutoResize | Boolean | 开启自动适应地图容器变化，默认启用
 enableDragging	| Boolean |	地图拖拽，默认启用

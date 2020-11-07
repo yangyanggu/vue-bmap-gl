@@ -21,6 +21,8 @@ export default {
     'minZoom',
     'maxZoom',
     'mapType',
+    'tilt', // 倾斜角度
+    'heading', // 旋转角度
     'enableAutoResize',
     'enableDragging',
     'enableInertialDragging',
@@ -77,6 +79,12 @@ export default {
         this.$bmap = this.$bmapComponent = new BMapGL.Map(elementID, props);
         this.$bmap.centerAndZoom(toLngLat(this.center), this.zoom);
         this.$bmap.enableScrollWheelZoom(true);
+        if (props.tilt !== undefined) {
+          this.$bmap.setTilt(props.tilt);
+        }
+        if (props.heading !== undefined) {
+          this.$bmap.setHeading(props.heading);
+        }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
         this.$children.forEach(component => {
