@@ -1,8 +1,8 @@
 <template>
-<div class="el-vue-bmap-container">
-    <div class="el-vue-bmap"></div>
-    <slot></slot>
-</div>
+  <div class="el-vue-bmap-container">
+      <div class="el-vue-bmap"></div>
+      <slot></slot>
+  </div>
 </template>
 <script>
 import guid from '../utils/guid';
@@ -91,8 +91,10 @@ export default {
 <style lang="less">
 .el-vue-bmap-container {
   height: 100%;
-.el-vue-bmap {
+
+  .el-vue-bmap-container .el-vue-bmap {
     height: 100%;
   }
 }
+
 </style>
