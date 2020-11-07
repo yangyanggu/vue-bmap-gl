@@ -48,7 +48,13 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          extractCSS: true
+          extractCSS: true,
+          loaders: {
+            css: ExtractTextPlugin.extract({
+              use: 'css-loader',
+              fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+            })
+          }
         }
       },
       {
