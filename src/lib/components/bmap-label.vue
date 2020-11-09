@@ -13,6 +13,7 @@ export default {
     'title',
     'labelStyle',
     'enableMassClear',
+    'visible',
     'events',
     'onceEvents'
   ],
@@ -30,6 +31,9 @@ export default {
         }
       },
       handlers: {
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
+        }
       }
     };
   },
@@ -39,6 +43,11 @@ export default {
       options.map.addOverlay(this.$bmapComponent);
       if (options.style) {
         this.$bmapComponent.setStyle(options.style);
+      }
+      if (options.visible === false) {
+        this.$nextTick(() => {
+          this.$bmapComponent.hide();
+        });
       }
     }
   },

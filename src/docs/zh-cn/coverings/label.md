@@ -9,13 +9,14 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-label v-for="label in labels" :content="label.content" :label-style="label.style" :offset="label.offset" :position="label.position" :events="label.events"></el-bmap-label>
+        <el-bmap-label v-for="label in labels" :content="label.content" :visible="label.visible" :label-style="label.style" :offset="label.offset" :position="label.position" :events="label.events"></el-bmap-label>
       </el-bmap>
+      <button @click="toggleVisible">切换显隐</button>
     </div>
   </template>
 
   <style>
-    .bmap-page-container {
+    .bmap-demo {
       height: 300px;
     }
   </style>
@@ -31,6 +32,7 @@
               position: [121.5273285, 31.21515044],
               content: 'hello world',
               offset: [0, 0],
+              visible: true,
               style: {
                 color: 'yellow'
               },
@@ -41,6 +43,11 @@
               }
             }
           ]
+        }
+      },
+      methods: {
+        toggleVisible() {
+            this.labels[0].visible = !this.labels[0].visible;
         }
       }
     };
@@ -68,7 +75,7 @@ offset |  Array [x,y] | 点标记显示位置偏移量
 title | String |  鼠标滑过点标记时的文字提示，不设置则鼠标滑过点标无文字提示
 labelStyle | Object | 设置文本标注样式，该样式将作用于文本标注的容器元素上。其中styles为JavaScript对象常量，比如： setStyle({ color : "red", fontSize : "12px" }) 注意：如果css的属性名中包含连字符，需要将连字符去掉并将其后的字母进行大写处理，例如：背景色属性要写成：backgroundColor
 enableMassClear | Boolean | 是否在调用map.clearOverlays清除此覆盖物，默认为true
-
+visible | Boolean | 覆盖物显隐控制,默认true
 
 
 ## ref 可用方法
