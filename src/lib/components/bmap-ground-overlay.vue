@@ -12,6 +12,7 @@
       'bounds',
       'minLevel',
       'maxLevel',
+      'visible',
       'events',
       'onceEvents'
     ],
@@ -28,6 +29,9 @@
           }
         },
         handlers: {
+          visible(flag) {
+            flag === false ? this.hide() : this.show();
+          }
         }
       };
     },
@@ -35,6 +39,11 @@
       __initComponent(options) {
         this.$bmapComponent = new BMapGL.GroundOverlay(options.bounds, options);
         options.map.addOverlay(this.$bmapComponent);
+        if (options.visible === false) {
+          this.$nextTick(() => {
+            this.$bmapComponent.hide();
+          });
+        }
       }
     },
     destroyed() {

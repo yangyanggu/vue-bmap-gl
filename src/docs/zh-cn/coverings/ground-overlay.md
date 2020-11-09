@@ -8,15 +8,16 @@
 <script v-pre type="text/x-template" id="example">
 
   <template>
-    <div class="amap-page-container">
-      <el-bmap vid="amap" :zoom="zoom" :center="center" class="amap-demo">
-        <el-bmap-ground-overlay v-for="groundimage in groundimages" :url="groundimage.url" :bounds="groundimage.bounds" :min-level="1" :max-level="21" :events="groundimage.events"></el-bmap-ground-overlay>
+    <div class="bmap-page-container">
+      <el-bmap vid="bmap" :zoom="zoom" :center="center" class="bmap-demo">
+        <el-bmap-ground-overlay v-for="groundimage in groundimages" :url="groundimage.url" :visible="groundimage.visible" :bounds="groundimage.bounds" :min-level="1" :max-level="21" :events="groundimage.events"></el-bmap-ground-overlay>
       </el-bmap>
+      <button @click="toggleVisible">切换显隐</button>
     </div>
   </template>
 
   <style>
-    .amap-demo {
+    .bmap-demo {
       height: 300px;
     }
   </style>
@@ -33,6 +34,7 @@
           groundimages: [
             {
               url: url,
+              visible: true,
               bounds: [[121.5273285, 31.21515044], [122.9273285, 32.31515044]],
               events: {
                 click(e) {
@@ -42,6 +44,11 @@
               }
             }
           ]
+        }
+      },
+      methods: {
+        toggleVisible() {
+            this.groundimages[0].visible = !this.groundimages[0].visible;
         }
       }
     };
@@ -68,6 +75,7 @@ url | String | 图片路径
 opacity | Number | 图片透明度，取值范围[0,1]，0表示完全透明，1表示不透明默认值：1
 minLevel | Number | 显示图片的最小级别
 maxLevel | Number | 显示图片的最大级别
+visible | Boolean | 覆盖物显隐控制,默认true
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
