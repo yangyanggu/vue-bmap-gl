@@ -143,9 +143,9 @@ icon参数说明
 名称 | 类型 | 说明
 ---|---|---|
 url | String | 图标的图片地址，可以是http地址，也可以是base64
-size | Array [x,y] | 图片的大小，根据实际图片大小来控制
-imageOffset | Array [x,y] | 图标所用的图片相对于可视区域的偏移值，<br/>此功能的作用等同于CSS中的background-position属性
-anchor | Array [x,y] | 图标的定位点相对于图标左上角的偏移值
+size | Array [x,y] | 默认[16,16], 图片的大小，根据实际图片大小来控制
+imageOffset | Array [x,y] | 默认[0,0], 图标所用的图片相对于可视区域的偏移值，<br/>此功能的作用等同于CSS中的background-position属性
+anchor | Array [x,y] | 默认[0,0], 图标的定位点相对于图标左上角的偏移值
 
 
 ## ref 可用方法

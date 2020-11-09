@@ -60,6 +60,13 @@ export default {
         }
       },
       handlers: {
+        center(point) {
+          if (this.setCenter) {
+            this.setCenter(point, {
+              noAnimation: false
+            });
+          }
+        }
       }
     };
   },
@@ -67,9 +74,7 @@ export default {
   mounted() {
     this.createMap();
   },
-
   methods: {
-
     createMap() {
       this._loadPromise.then(() => {
         let mapElement = this.$el.querySelector('.el-vue-bmap');

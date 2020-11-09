@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-bmap ref="map" vid="amapDemo" :min-zoom="10" :max-zoom="11" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
+      <el-bmap ref="map" vid="amapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
       </el-bmap>
 
       <div class="toolbar">
@@ -34,7 +34,7 @@
       data: function() {
         return {
           bmapManager,
-          zoom: 12,
+          zoom: 16,
           center: [121.59996, 31.197646],
           tilt: 60,
           heading: 0,
@@ -42,6 +42,7 @@
             init: (o) => {
               console.log(o.getCenter())
               console.log(this.$refs.map.$$getInstance())
+              this.panMap();
             },
             'moveend': () => {
             },
@@ -53,13 +54,21 @@
           },
         };
       },
-
+      mounted() {
+      },
       methods: {
         getMap() {
           // amap vue component
           console.log(bmapManager._componentMap);
           // gaode map instance
           console.log(bmapManager._map);
+        },
+        panMap() {
+            setTimeout( () => {
+                this.center = [(this.center[0]+0.0001), this.center[1]];
+                this.panMap();
+                console.log(this.center)
+            },1000);
         }
       }
     };

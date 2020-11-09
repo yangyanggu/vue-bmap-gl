@@ -39,7 +39,7 @@ export default {
           if (!options) {
             return null;
           }
-          const {url, size = [16, 16], imageSize, imageOffset = [-8, -8], anchor = [0, 0]} = options;
+          const {url, size = [16, 16], imageSize, imageOffset = [0, 0], anchor = [0, 0]} = options;
           return new BMapGL.Icon(url, toSize(size), {
             imageOffset: toSize(imageOffset),
             anchor: toSize(anchor),
