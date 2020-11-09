@@ -19,6 +19,7 @@ export default {
     'enableMassClear',
     'enableEditing',
     'enableClicking',
+    'visible',
     'events',
     'onceEvents'
   ],
@@ -30,6 +31,9 @@ export default {
         }
       },
       handlers: {
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
+        }
       }
     };
   },
@@ -37,7 +41,6 @@ export default {
     __initComponent(options) {
       this.$bmapComponent = new BMapGL.Circle(options.center, options.radius, options);
       options.map.addOverlay(this.$bmapComponent);
-      console.log(this.$bmapComponent.getCenter());
     },
     $$getCenter() {
       let center = this.$bmapComponent.getCenter();

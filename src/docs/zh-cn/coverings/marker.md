@@ -142,6 +142,7 @@ raiseOnDrag | Boolean | 拖拽标注时，标注是否开启离开地图表面�
 enableClicking | Boolean | 是否响应点击事件。默认为true
 enableDragging | Boolean | 设置点标记是否可拖拽移动，默认为false。
 enableMassClear | Boolean | 是否允许覆盖物在map.clearOverlays方法中被清除，默认true。
+visible | Boolean | 覆盖物显隐控制,默认true
 
 icon参数说明
 

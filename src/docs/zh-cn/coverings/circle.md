@@ -9,9 +9,10 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="amapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-circle v-for="circle in circles" :center="circle.center" :radius="circle.radius" :fill-opacity="circle.fillOpacity" :events="circle.events" :enable-editing="circle.enableEditing"></el-bmap-circle>
+        <el-bmap-circle v-for="circle in circles" :center="circle.center" :visible="circle.visible" :radius="circle.radius" :fill-opacity="circle.fillOpacity" :events="circle.events" :enable-editing="circle.enableEditing"></el-bmap-circle>
       </el-bmap>
       <button @click="toggleEdit()">切换编辑状态</button>
+      <button @click="toggleVisible">切换显隐</button>
     </div>
   </template>
 
@@ -33,6 +34,7 @@
               radius: 200,
               enableEditing: true,
               fillOpacity: 0.5,
+              visible: true,
               events: {
                 click: () => {
                   alert('click');
@@ -50,6 +52,9 @@
             this.circles.forEach( v => {
                 v.enableEditing = !v.enableEditing;
             })
+        },
+        toggleVisible(){
+            this.circles[0].visible = !this.circles[0].visible;
         }
       }
     };
@@ -82,6 +87,7 @@ strokeStyle | String | 轮廓线样式，实线:solid，虚线:dashed
 enableMassClear | Boolean | 是否在调用map.clearOverlays清除此覆盖物，默认为true
 enableEditing | Boolean | 是否启用线编辑，默认为false
 enableClicking | Boolean | 是否响应点击事件，默认为true
+visible | Boolean | 覆盖物显隐控制,默认true
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
