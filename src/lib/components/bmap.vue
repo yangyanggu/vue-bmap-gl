@@ -37,6 +37,7 @@ export default {
     'bounds',
     'draggingCursor',
     'mapStyleV2',
+    'trafficVisible',
     'bmapManager',  // 地图管理 manager
     'events'
   ],
@@ -66,6 +67,13 @@ export default {
               noAnimation: false
             });
           }
+        },
+        trafficVisible(flag) {
+          if(flag){
+            this.setTrafficOn();
+          }else{
+            this.setTrafficOff();
+          }
         }
       }
     };
@@ -89,6 +97,9 @@ export default {
         }
         if (props.heading !== undefined) {
           this.$bmap.setHeading(props.heading);
+        }
+        if(props.trafficVisible){
+          this.$bmap.setTrafficOn();
         }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);

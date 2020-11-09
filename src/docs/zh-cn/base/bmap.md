@@ -112,6 +112,7 @@ enableTiltGestures | Boolean | 允许通过手势倾斜地图
 bounds | [Bounds](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_webgl_1_0.html#a1b2) | 地图当前视野范围的矩形区域，以地理坐标表示
 draggingCursor | String | 拖拽地图时的鼠标指针样式
 mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象
+trafficVisible | Boolean | 设置是否显示交通流量图层
 
 ## BmapManager
 
