@@ -41,6 +41,11 @@ export default {
     __initComponent(options) {
       this.$bmapComponent = new BMapGL.Circle(options.center, options.radius, options);
       options.map.addOverlay(this.$bmapComponent);
+      if (options.visible === false) {
+        this.$nextTick(() => {
+          this.$bmapComponent.hide();
+        });
+      }
     },
     $$getCenter() {
       let center = this.$bmapComponent.getCenter();

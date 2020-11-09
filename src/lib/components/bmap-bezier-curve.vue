@@ -14,6 +14,7 @@ export default {
     'strokeWeight',
     'strokeStyle',
     'enableMassClear',
+    'visible',
     'events',
     'onceEvents'
   ],
@@ -31,6 +32,9 @@ export default {
       },
 
       handlers: {
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
+        }
       }
     };
   },
@@ -38,6 +42,11 @@ export default {
     __initComponent(options) {
       this.$bmapComponent = new BMapGL.BezierCurve(options.path, options.controlPoints, options);
       options.map.addOverlay(this.$bmapComponent);
+      if (options.visible === false) {
+        this.$nextTick(() => {
+          this.$bmapComponent.hide();
+        });
+      }
     },
     $$getPath() {
       return this.$bmapComponent.getPath().map(lngLatTo);

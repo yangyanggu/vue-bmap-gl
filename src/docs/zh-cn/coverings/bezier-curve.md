@@ -9,14 +9,15 @@
 <template>
   <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-bezier-curve v-for="line in lines" :events="line.events" :path="line.path" :control-points="line.controlPoints" :stroke-color="line.strokeColor" :stroke-style="line.strokeStyle" :events="line.events" :stroke-opacity="line.strokeOpacity"></el-bmap-bezier-curve>
+        <el-bmap-bezier-curve v-for="line in lines" :events="line.events" :visible="line.visible" :path="line.path" :control-points="line.controlPoints" :stroke-color="line.strokeColor" :stroke-style="line.strokeStyle" :events="line.events" :stroke-opacity="line.strokeOpacity"></el-bmap-bezier-curve>
       </el-bmap>
+      <button @click="toggleVisible">切换显隐</button>
     </div>
   </template>
 
   <style>
-    .bmap-page-container {
-      height: 200px;
+    .bmap-demo {
+      height: 300px;
     }
   </style>
 
@@ -38,6 +39,7 @@
                 [116.38, 39.90],
                 [116.40, 39.90]
               ],
+              visible: true,
               strokeDasharray: [10, 10],
               strokeColor: "#ff33ff", //线颜色
               strokeOpacity: 1, //线透明度
@@ -50,6 +52,11 @@
               }
             }
           ]
+        }
+      },
+      methods: {
+        toggleVisible() {
+            this.lines[0].visible = !this.lines[0].visible;
         }
       }
     };
@@ -78,6 +85,7 @@ strokeOpacity | Number | 透明度
 strokeWeight | Number | 线宽
 strokeStyle | String | 虚线或者视线，'dashed'、'solid'
 enableMassClear | Boolean | 是否在调用map.clearOverlays清除此覆盖物，默认为true
+visible | Boolean | 覆盖物显隐控制,默认true
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
