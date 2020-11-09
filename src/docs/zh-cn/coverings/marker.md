@@ -10,13 +10,14 @@
     <div class="amap-page-container">
       <el-bmap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
         <el-bmap-marker vid="component-marker" :position="componentMarker.position" ></el-bmap-marker>
-        <el-bmap-marker v-for="(marker, index) in markers" :icon="marker.icon" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
+        <el-bmap-marker v-for="(marker, index) in markers" :icon="marker.icon" :visible="marker.visible" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
       </el-bmap>
       <div class="toolbar">
         <button type="button" name="button" v-on:click="changePosition">change position</button>
         <button type="button" name="button" v-on:click="chnageDraggle">change draggle</button>
         <button type="button" name="button" v-on:click="addMarker">add marker</button>
         <button type="button" name="button" v-on:click="removeMarker">remove marker</button>
+        <button type="button" name="button" v-on:click="visibleMarker">切换显隐</button>
       </div>
     </div>
   </template>
@@ -48,6 +49,7 @@
             {
               position: [121.5273285, 31.21515044],
               title: 'markers1',
+              visible: true,
               icon: {
                 url: carIcon,
                 size: [44, 88],
@@ -79,6 +81,9 @@
         };
       },
       methods: {
+        visibleMarker(){
+          this.markers[0].visible = !this.markers[0].visible;
+        },
         onClick() {
           this.count += 1;
         },

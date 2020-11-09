@@ -69,9 +69,9 @@ export default {
           }
         },
         trafficVisible(flag) {
-          if(flag){
+          if (flag) {
             this.setTrafficOn();
-          }else{
+          } else {
             this.setTrafficOff();
           }
         }
@@ -98,7 +98,7 @@ export default {
         if (props.heading !== undefined) {
           this.$bmap.setHeading(props.heading);
         }
-        if(props.trafficVisible){
+        if (props.trafficVisible) {
           this.$bmap.setTrafficOn();
         }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
