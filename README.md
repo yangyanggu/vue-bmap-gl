@@ -44,17 +44,19 @@ VueBMap.initBMapApiLoader({
 ## 组件
 
 目前完成组件：
-* el-map（地图）
+* el-bmap（地图）
 * el-bmap-bezier-curve（贝塞尔曲线）
 * el-bmap-circle（圆）
 * el-bmap-ground-overlay（地面叠加层）
 * el-bmap-info-window（信息窗口）
-* bmap-label（文本标记）
-* bmap-marker（标号）
-* bmap-marker-3d（3D标号）
-* bmap-polygon（多边形）
-* bmap-polyline（折线）
-* bmap-prism（3D棱柱）
+* el-bmap-label（文本标记）
+* el-bmap-marker（标号）
+* el-bmap-marker-3d（3D标号）
+* el-bmap-polygon（多边形）
+* el-bmap-polyline（折线）
+* el-bmap-prism（3D棱柱）
+* el-bmap-menu（右击菜单）
+
 
 ### 其他特性
 

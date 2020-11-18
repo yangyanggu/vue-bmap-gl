@@ -9,7 +9,7 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-marker-3d v-for="(marker, index) in markers" :icon="marker.icon" :position="marker.position" :size="marker.size" :height="marker.height" :events="marker.events" :vid="index" ></el-bmap-marker-3d>
+        <el-bmap-marker-3d v-for="(marker, index) in markers" :icon="marker.icon" :position="marker.position" :size="marker.size" :height="marker.height" :events="marker.events" :visible="marker.visible" :vid="index" ></el-bmap-marker-3d>
       </el-bmap>
       <div class="toolbar">
         <button type="button" name="button" v-on:click="changePosition">change position</button>
@@ -53,32 +53,10 @@
         };
       },
       methods: {
-        onClick() {
-          this.count += 1;
-        },
         changePosition() {
           let position = this.markers[0].position;
           this.markers[0].position = [position[0] + 0.002, position[1] - 0.002];
         },
-        chnageDraggle() {
-          let draggable = this.markers[0].enableDragging;
-          this.markers[0].enableDragging = !draggable;
-        },
-        toggleVisible() {
-          let visableVar = this.markers[0].visible;
-          this.markers[0].visible = !visableVar;
-        },
-        addMarker() {
-          let marker = {
-            position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
-            enableDragging: false
-          };
-          this.markers.push(marker);
-        },
-        removeMarker() {
-          if (!this.markers.length) return;
-          this.markers.splice(this.markers.length - 1, 1);
-        }
       }
     };
   </script>
