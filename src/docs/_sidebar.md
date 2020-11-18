@@ -21,6 +21,7 @@
 
 - 扩展
   - [搜索组件](zh-cn/services/searchbox.md)
+  - [右击菜单](zh-cn/services/menu.md)
 
 - 插件
   - [指南](zh-cn/plugins/base.md)
@@ -33,16 +34,5 @@
 - 自定义组件
   - [指南](zh-cn/custom/custom.md)
   - [组件列表](zh-cn/custom/list.md)
-  
-- 示例中心
- - 基础
-   - [地图](zh-cn/examples/base/amap.md)
- - 覆盖物
-   - [点坐标 - 聚合](zh-cn/examples/coverings/marker-cluster.md)
-   - [点坐标 - 自定义内容](zh-cn/examples/coverings/marker-custom-content.md)
-   
- - 窗体
-   - [信息窗体 - 切换](zh-cn/examples/windows/info-window.md)
-   - [信息窗体 - 自定义内容](zh-cn/examples/windows/info-window-custom-content.md)
 
 - [FAQ](zh-cn/faq.md)

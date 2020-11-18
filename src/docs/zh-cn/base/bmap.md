@@ -9,8 +9,8 @@
 <script v-pre type="text/x-template" id="example">
 
   <template>
-    <div class="amap-page-container">
-      <el-bmap ref="map" vid="amapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
+    <div class="bmap-page-container">
+      <el-bmap ref="map" vid="bmapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
       </el-bmap>
 
       <div class="toolbar">
@@ -27,7 +27,7 @@
 
   <script>
     // NPM 方式
-    //  import { AMapManager } from 'vue-bmap-gl';
+    //  import { BMapManager } from 'vue-bmap-gl';
     // CDN 方式
     let bmapManager = new VueBMap.BMapManager();
     module.exports = {
@@ -58,9 +58,9 @@
       },
       methods: {
         getMap() {
-          // amap vue component
+          // bmap vue component
           console.log(bmapManager._componentMap);
-          // gaode map instance
+          // 百度 map instance
           console.log(bmapManager._map);
         },
         panMap() {
@@ -81,7 +81,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-vid | String | 地图容器节点的ID。
+vid | String | 组件的ID。
 bmapManager| BMapManager | 地图管理对象。
 events | Object | 事件
 
