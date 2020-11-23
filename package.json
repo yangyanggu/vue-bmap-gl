@@ -1,6 +1,6 @@
 {
   "name": "vue-bmap-gl",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "vue bmap-gl",
   "main": "./dist/index.js",
   "sideEffects": false,
