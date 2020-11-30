@@ -93,7 +93,7 @@ export default {
       return pixelTo(this.$bmapComponent.getOffset());
     }
   },
-  render(h) {
+  render() {
     return null;
   },
   destroyed() {
