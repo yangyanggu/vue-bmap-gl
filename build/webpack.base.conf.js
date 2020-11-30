@@ -1,7 +1,10 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const utils = require('./utils')
+let config = require('../config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -17,7 +20,6 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath,
-    chunkFilename: 'index.js',
     library: 'VueBMap',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -28,7 +30,6 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'src': path.resolve(__dirname, '../src'),
-      demos: path.join(__dirname, '../src/homepage/demos'),
       'vue-bmap-gl': path.join(__dirname, '../src/lib')
     },
     modules: [resolve('src'), "node_modules"]
@@ -36,26 +37,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: "pre",
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+        test: /\.vue$/,
+        use: 'vue-loader'
       },
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          extractCSS: true,
-          loaders: {
-            css: ExtractTextPlugin.extract({
-              use: 'css-loader',
-              fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
-            })
-          }
-        }
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader'
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
       },
       {
         test: /\.md$/,
@@ -85,6 +83,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("style.css")
+    new CleanWebpackPlugin(),
+    new ESLintPlugin({
+      extensions: ['js','vue']
+    }),
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
   ]
 }

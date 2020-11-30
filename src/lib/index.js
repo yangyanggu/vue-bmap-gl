@@ -74,7 +74,7 @@ VueBMap.install = (Vue) => {
   });
 };
 
-const install = function(Vue, opts = {}) {
+const install = function(Vue) {
   /* istanbul ignore if */
   if (install.installed) return;
   VueBMap.install(Vue);

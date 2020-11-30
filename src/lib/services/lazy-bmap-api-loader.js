@@ -49,19 +49,19 @@ export default class AMapAPILoader {
     const paramKeys = ['v', 'ak', 'type', 'callback'];
 
     const params = Object.keys(config)
-                         .filter(k => ~paramKeys.indexOf(k))
-                         .filter(k => config[k] != null)
-                         .filter(k => {
-                           return !Array.isArray(config[k]) ||
-                                (Array.isArray(config[k]) && config[k].length > 0);
-                         })
-                         .map(k => {
-                           let v = config[k];
-                           if (Array.isArray(v)) return { key: k, value: v.join(',')};
-                           return {key: k, value: v};
-                         })
-                         .map(entry => `${entry.key}=${entry.value}`)
-                         .join('&');
+      .filter(k => ~paramKeys.indexOf(k))
+      .filter(k => config[k] != null)
+      .filter(k => {
+        return !Array.isArray(config[k]) ||
+              (Array.isArray(config[k]) && config[k].length > 0);
+      })
+      .map(k => {
+        let v = config[k];
+        if (Array.isArray(v)) return { key: k, value: v.join(',')};
+        return {key: k, value: v};
+      })
+      .map(entry => `${entry.key}=${entry.value}`)
+      .join('&');
     return `${this._config.protocol}://${this._config.hostAndPath}?${params}`;
   }
 

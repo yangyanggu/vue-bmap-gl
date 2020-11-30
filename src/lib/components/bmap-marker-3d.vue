@@ -59,7 +59,7 @@ export default {
       return pixelTo(this.$bmapComponent.getSize());
     }
   },
-  render(h) {
+  render() {
     return null;
   },
   destroyed() {

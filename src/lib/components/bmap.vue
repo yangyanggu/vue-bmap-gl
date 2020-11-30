@@ -38,7 +38,7 @@ export default {
     'draggingCursor',
     'mapStyleV2',
     'trafficVisible',
-    'bmapManager',  // 地图管理 manager
+    'bmapManager', // 地图管理 manager
     'events'
   ],
 
