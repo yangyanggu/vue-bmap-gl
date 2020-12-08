@@ -56,6 +56,7 @@ VueBMap.initBMapApiLoader({
 * el-bmap-polyline（折线）
 * el-bmap-prism（3D棱柱）
 * el-bmap-menu（右击菜单）
+* el-bmap-track（车辆跟踪）
 
 
 ### 其他特性

@@ -115,6 +115,7 @@ export default {
 <style lang="less">
 .el-vue-bmap-container {
   height: 100%;
+  position: relative;
 
   .el-vue-bmap {
     height: 100%;
