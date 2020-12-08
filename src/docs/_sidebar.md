@@ -20,9 +20,8 @@
   - [信息窗体](zh-cn/windows/info-window.md)
 
 - 扩展
-  - [搜索组件](zh-cn/services/searchbox.md)
   - [右击菜单](zh-cn/services/menu.md)
-
+  - [车辆跟踪](zh-cn/services/track.md)
 - 插件
   - [指南](zh-cn/plugins/base.md)
   - [类型插件](zh-cn/plugins/maptype.md)
