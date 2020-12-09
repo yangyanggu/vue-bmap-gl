@@ -10,6 +10,7 @@ import CONST from '../utils/constant';
 import { toLngLat } from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
 import {lazyBMapApiLoaderInstance} from '../services/injected-bmap-api-instance';
+
 export default {
   name: 'el-bmap',
   mixins: [registerMixin],
@@ -63,8 +64,12 @@ export default {
       handlers: {
         center(point) {
           if (this.setCenter) {
+            let tilt = this.getTilt();
+            let heading = this.getHeading();
             this.setCenter(point, {
-              noAnimation: false
+              noAnimation: false,
+              tilt,
+              heading
             });
           }
         },
