@@ -73,15 +73,16 @@ export default {
       },
       handlers: {
         position(newValue) {
-          if (_this && _this.iconVisible) {
+          if (_this && _this.iconVisible && this.isLoaded()) {
             let p = new BMapGL.Point(newValue[0], newValue[1]);
-            let tilt = _this.tilt;
-            this.setCenter(p, {
+            let tilt = this.getTilt();
+            let heading = this.getHeading();
+            let options = {
               noAnimation: false,
-              heading: (360 - _this.heading),
-              tilt: tilt,
-              zoom: 21
-            });
+              tilt,
+              heading
+            };
+            this.setCenter(p, options);
           }
         },
         offset() {
