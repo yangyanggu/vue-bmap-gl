@@ -79,6 +79,9 @@ export default {
           } else {
             this.setTrafficOff();
           }
+        },
+        mapStyleV2(style) {
+          this.setMapStyleV2(style);
         }
       }
     };
@@ -105,6 +108,9 @@ export default {
         }
         if (props.trafficVisible) {
           this.$bmap.setTrafficOn();
+        }
+        if (props.mapStyleV2) {
+          this.$bmap.setMapStyleV2(props.mapStyleV2);
         }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
