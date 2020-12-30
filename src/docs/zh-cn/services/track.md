@@ -34,7 +34,7 @@
       data() {
         
         return {
-          zoom: 15,
+          zoom: 21,
           center: [path[0][0], path[0][1]],
           heading: 0,
           index: 1,

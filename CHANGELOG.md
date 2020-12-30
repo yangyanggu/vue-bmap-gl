@@ -1,3 +1,7 @@
+###V0.0.9
+  * 修复label与infoWindow的position无法动态修改问题
+  * label增加slot功能
+
 ###V0.0.7
   增加车辆跟踪插件
 

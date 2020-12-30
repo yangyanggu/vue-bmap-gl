@@ -1,4 +1,7 @@
 # 文本
+文本功能与百度原有API有些区别，增加以下功能<br/>
+* isCustom属性，该属性用于取消label默认设置的边框和背景颜色
+* 支持slot方式
 
 ## 基础示例
 
@@ -10,8 +13,14 @@
     <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
         <el-bmap-label v-for="label in labels" :content="label.content" :visible="label.visible" :label-style="label.style" :offset="label.offset" :position="label.position" :events="label.events"></el-bmap-label>
+        <el-bmap-label :position="diyLabel.position" :is-custom="true">
+            <div style="color:red;font-size:20px;">diy[{{diyLabel.num}}]</div>
+        </el-bmap-label>
       </el-bmap>
-      <button @click="toggleVisible">切换显隐</button>
+      <div class="toolbar">
+        <button type="button" name="button" @click="changePosition">切换diy位置</button>
+        <button @click="toggleVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 
@@ -42,13 +51,22 @@
                 }
               }
             }
-          ]
+          ],
+          diyLabel: {
+            position: [121.5215285, 31.21515044],
+            num: 0
+          }
         }
       },
       methods: {
         toggleVisible() {
             this.labels[0].visible = !this.labels[0].visible;
-        }
+        },
+        changePosition() {
+          let position = this.diyLabel.position;
+          this.diyLabel.position = [position[0] + 0.0002, position[1] - 0.0002];
+          this.diyLabel.num++;
+        },
       }
     };
   </script>
@@ -62,6 +80,7 @@
 名称 | 类型 | 说明
 ---|---|---|
 vid | String | 组件的ID。
+isCustom | Boolean | 是否自定义样式，默认false，设置为true时会将style设置为{border:'none',background:'none'}，该属性会覆盖labelStyle属性
 events | Object | 事件，key值为事件名称，提供默认的init事件，用于初始化后的操作.具体事件说明见下面的事件列表
 
 ## 动态属性

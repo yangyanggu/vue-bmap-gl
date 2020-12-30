@@ -10,6 +10,7 @@ import CONST from '../utils/constant';
 import { toLngLat } from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
 import {lazyBMapApiLoaderInstance} from '../services/injected-bmap-api-instance';
+
 export default {
   name: 'el-bmap',
   mixins: [registerMixin],
@@ -63,8 +64,12 @@ export default {
       handlers: {
         center(point) {
           if (this.setCenter) {
+            let tilt = this.getTilt();
+            let heading = this.getHeading();
             this.setCenter(point, {
-              noAnimation: false
+              noAnimation: false,
+              tilt,
+              heading
             });
           }
         },
@@ -74,6 +79,9 @@ export default {
           } else {
             this.setTrafficOff();
           }
+        },
+        mapStyleV2(style) {
+          this.setMapStyleV2(style);
         }
       }
     };
@@ -100,6 +108,9 @@ export default {
         }
         if (props.trafficVisible) {
           this.$bmap.setTrafficOn();
+        }
+        if (props.mapStyleV2) {
+          this.$bmap.setMapStyleV2(props.mapStyleV2);
         }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
