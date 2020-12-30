@@ -72,6 +72,9 @@ export default {
         title(title) {
           self.$bmapComponent.setTitle(title);
           self.$bmapComponent.redraw();
+        },
+        position(value) {
+          if (self.visible !== false) self.$bmap.openInfoWindow(self.$bmapComponent, value);
         }
       }
     };
@@ -104,7 +107,6 @@ export default {
       delete options.map;
 
       this.$bmapComponent = new BMapGL.InfoWindow(options.content, options);
-      console.log(this.visible);
       if (this.visible !== false) this.$bmap.openInfoWindow(this.$bmapComponent, toLngLat(this.position));
     }
   },

@@ -21,6 +21,7 @@
       </el-bmap>
       <button @click="switchWindow(0)">Show First Window</button>
       <button @click="switchWindow(1)">Show Second Window</button>
+      <button @click="changePosition()">修改弹出框位置</button>
     </div>
   </template>
 
@@ -84,7 +85,11 @@
             this.currentWindow.visible = true;
             console.log(this.currentWindow)
           });
-        }
+        },
+        changePosition() {
+          let position = this.currentWindow.position;
+          this.currentWindow.position = [position[0] + 0.002, position[1] - 0.002];
+        },
       }
     };
   </script>
