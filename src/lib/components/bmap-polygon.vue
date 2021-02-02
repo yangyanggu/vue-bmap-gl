@@ -30,6 +30,13 @@ export default {
         }
       },
       handlers: {
+        path(value) {
+          this.setPath(value);
+          if (this._config.enableEditing) {
+            this.disableEditing();
+            this.enableEditing();
+          }
+        }
       }
     };
   },
