@@ -95,4 +95,5 @@ mouseup | event{type, target, point, pixel} | 鼠标抬起
 mouseover | event{type, target, point, pixel} | 鼠标经过
 mouseout | event{type, target, point, pixel} | 鼠标移出
 remove | {type, target} | 移除圆形时触发此事件
-lineupdate | {type, target}	| 圆形覆盖物的属性发生变化时触发此事件
+lineupdate | {type, target}	| 圆形覆盖物的属性发生变化时触发此事件，使用该事件后会导致修改path后图形不刷新问题
+editend | {type, target} | 拖拽编辑后触发此事件

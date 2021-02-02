@@ -1,3 +1,7 @@
+###V0.0.10
+  * 地图增加defaultCursor属性
+  * 修复polygon修改path时，如果处于edit状态，不会触发拖拽图标问题
+
 ###V0.0.9
   * 修复label与infoWindow的position无法动态修改问题
   * label增加slot功能

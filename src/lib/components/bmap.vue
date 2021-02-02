@@ -37,6 +37,7 @@ export default {
     'enableTiltGestures',
     'bounds',
     'draggingCursor',
+    'defaultCursor',
     'mapStyleV2',
     'trafficVisible',
     'bmapManager', // 地图管理 manager
@@ -111,6 +112,9 @@ export default {
         }
         if (props.mapStyleV2) {
           this.$bmap.setMapStyleV2(props.mapStyleV2);
+        }
+        if (props.defaultCursor) {
+          this.$bmap.setDefaultCursor(props.defaultCursor);
         }
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);

@@ -402,6 +402,7 @@ bounds | [Bounds](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_webgl_1_0.ht
 draggingCursor | String | 拖拽地图时的鼠标指针样式
 mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象
 trafficVisible | Boolean | 设置是否显示交通流量图层
+defaultCursor | String | 设置地图默认的鼠标指针样式。参数cursor应符合CSS的cursor属性规范
 
 ## BmapManager
 
