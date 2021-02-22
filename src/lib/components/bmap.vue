@@ -131,6 +131,7 @@ export default {
 .el-vue-bmap-container {
   height: 100%;
   position: relative;
+  overflow: hidden;
 
   .el-vue-bmap {
     height: 100%;

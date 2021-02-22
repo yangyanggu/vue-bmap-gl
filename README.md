@@ -13,6 +13,11 @@
 > 该版本在原来的版本上增加对bmap WebGL1.0的适配
 > 该项目基于 https://github.com/ElemeFE/vue-amap/ 修改开发
 
+```html
+觉得有用可以给个star
+```
+
+
 ## 安装
 ```
 npm install -S vue-bmap-gl
@@ -57,6 +62,7 @@ VueBMap.initBMapApiLoader({
 * el-bmap-prism（3D棱柱）
 * el-bmap-menu（右击菜单）
 * el-bmap-track（车辆跟踪）
+* el-bmap-info-window-custom(自定义信息窗体)
 
 
 ### 其他特性
