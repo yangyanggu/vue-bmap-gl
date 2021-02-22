@@ -83,7 +83,7 @@ offset | Array[x,y] | 信息窗位置偏移值。默认情况下在地图上打�
 enableAutoPan | Boolean | 是否开启信息窗口打开时地图自动移动（默认开启）
 enableCloseOnClick | Boolean | 是否开启点击地图关闭信息窗口（默认开启）
 visible | Boolean | 信息窗体是否显示。可以同时显示多个，需要自定义控制显隐。可以给visible属性增加.sync，用于同步组件显隐，主要用于点击地图隐藏信息框时，同步修改父组件的值
-
+isCustom | Boolean | 是否自定义，true时信息框不提供任何默认样式
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
