@@ -12,6 +12,7 @@
       <el-bmap vid="amap" :zoom="zoom" :center="center" class="amap-demo">
         <el-bmap-marker :position="currentWindow.position"></el-bmap-marker>
         <el-bmap-info-window-custom
+          :is-custom="true"
           :position="currentWindow.position"
           :visible.sync="currentWindow.visible"
           >

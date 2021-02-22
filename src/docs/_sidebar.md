@@ -24,16 +24,8 @@
 - 扩展
   - [右击菜单](zh-cn/services/menu.md)
   - [车辆跟踪](zh-cn/services/track.md)
-- 插件
-  - [指南](zh-cn/plugins/base.md)
-  - [类型插件](zh-cn/plugins/maptype.md)
-  - [鹰眼插件](zh-cn/plugins/overview.md)
-  - [比例尺插件](zh-cn/plugins/scale.md)
-  - [工具条插件](zh-cn/plugins/toolbar.md)
-  - [定位插件](zh-cn/plugins/geolocation.md)
 
 - 自定义组件
-  - [指南](zh-cn/custom/custom.md)
   - [组件列表](zh-cn/custom/list.md)
 
 - [FAQ](zh-cn/faq.md)
