@@ -3,6 +3,7 @@
  - [快速上手](zh-cn/introduction/quick-start.md)
  - [脚本初始化](zh-cn/introduction/init.md)
  - [兼容百度地图GL SDK](zh-cn/introduction/compatible.md)
+ - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl)
 - 基础
  - [地图](zh-cn/base/bmap.md)
 
@@ -18,20 +19,13 @@
  - [3D棱柱](zh-cn/coverings/prism.md)
 - 窗体
   - [信息窗体](zh-cn/windows/info-window.md)
+  - [可自定义信息窗体](zh-cn/windows/info-window-custom.md)
 
 - 扩展
   - [右击菜单](zh-cn/services/menu.md)
   - [车辆跟踪](zh-cn/services/track.md)
-- 插件
-  - [指南](zh-cn/plugins/base.md)
-  - [类型插件](zh-cn/plugins/maptype.md)
-  - [鹰眼插件](zh-cn/plugins/overview.md)
-  - [比例尺插件](zh-cn/plugins/scale.md)
-  - [工具条插件](zh-cn/plugins/toolbar.md)
-  - [定位插件](zh-cn/plugins/geolocation.md)
 
 - 自定义组件
-  - [指南](zh-cn/custom/custom.md)
   - [组件列表](zh-cn/custom/list.md)
 
 - [FAQ](zh-cn/faq.md)
