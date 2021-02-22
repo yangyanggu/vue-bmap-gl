@@ -160,6 +160,8 @@ export default {
 
     &.custom{
       box-shadow: none;
+      border-radius: 0;
+      background: none;
 
     }
   }
