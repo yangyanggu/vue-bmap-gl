@@ -130,8 +130,8 @@ export default {
     },
     calcPosition() {
       let pixel = this.$bmap.pointToPixel(this.savePosition);
-      this.styleObj.left = pixel.x + 'px';
-      this.styleObj.top = pixel.y + 'px';
+      this.styleObj.left = (pixel.x + this.offset[0]) + 'px';
+      this.styleObj.top = (pixel.y + this.offset[1]) + 'px';
     }
   }
 };
