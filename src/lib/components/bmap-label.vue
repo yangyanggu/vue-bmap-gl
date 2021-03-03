@@ -27,6 +27,7 @@ export default {
     let self = this;
 
     return {
+      preHtml: '',
       tmpVM: null,
       propsRedirect: {
         labelStyle: 'style',
@@ -111,7 +112,11 @@ export default {
   },
   updated() {
     this.$nextTick(() => {
-      this.$bmapComponent.setContent(this.tmpVM.$refs.node.outerHTML);
+      let html = this.tmpVM.$refs.node.outerHTML;
+      if (this.preHtml !== html) {
+        this.$bmapComponent.setContent(html);
+        this.preHtml = html;
+      }
     });
   },
   destroyed() {
