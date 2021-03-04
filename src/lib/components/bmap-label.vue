@@ -114,7 +114,9 @@ export default {
     this.$nextTick(() => {
       let html = this.tmpVM.$refs.node.outerHTML;
       if (this.preHtml !== html) {
-        this.$bmapComponent.setContent(html);
+        if (this.$bmapComponent) {
+          this.$bmapComponent.setContent(html);
+        }
         this.preHtml = html;
       }
     });
