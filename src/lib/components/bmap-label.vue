@@ -77,12 +77,9 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      if (this.$slots.default && this.$slots.default.length) {
-        options.content = this.tmpVM.$refs.node.outerHTML;
-      }
       this.$bmapComponent = new BMapGL.Label(options.content, options);
       options.map.addOverlay(this.$bmapComponent);
-      console.log(options);
+      // console.log(options);
       if (options.style) {
         this.$bmapComponent.setStyle(options.style);
       }
@@ -91,6 +88,13 @@ export default {
           border: 'none',
           background: 'none'
         });
+      }
+      if (this.$slots.default && this.$slots.default.length) {
+        this.$nextTick(() => {
+          this.preHtml = this.tmpVM.$refs.node.outerHTML;
+          this.$bmapComponent.setContent(this.preHtml);
+        });
+
       }
       if (options.visible === false) {
         this.$nextTick(() => {
