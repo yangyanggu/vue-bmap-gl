@@ -27,6 +27,7 @@ export default {
     let self = this;
 
     return {
+      preHtml: '',
       tmpVM: null,
       propsRedirect: {
         labelStyle: 'style',
@@ -76,12 +77,9 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      if (this.$slots.default && this.$slots.default.length) {
-        options.content = this.tmpVM.$refs.node.outerHTML;
-      }
       this.$bmapComponent = new BMapGL.Label(options.content, options);
       options.map.addOverlay(this.$bmapComponent);
-      console.log(options);
+      // console.log(options);
       if (options.style) {
         this.$bmapComponent.setStyle(options.style);
       }
@@ -90,6 +88,13 @@ export default {
           border: 'none',
           background: 'none'
         });
+      }
+      if (this.$slots.default && this.$slots.default.length) {
+        this.$nextTick(() => {
+          this.preHtml = this.tmpVM.$refs.node.outerHTML;
+          this.$bmapComponent.setContent(this.preHtml);
+        });
+
       }
       if (options.visible === false) {
         this.$nextTick(() => {
@@ -111,7 +116,13 @@ export default {
   },
   updated() {
     this.$nextTick(() => {
-      this.$bmapComponent.setContent(this.tmpVM.$refs.node.outerHTML);
+      let html = this.tmpVM.$refs.node.outerHTML;
+      if (this.preHtml !== html) {
+        if (this.$bmapComponent) {
+          this.$bmapComponent.setContent(html);
+        }
+        this.preHtml = html;
+      }
     });
   },
   destroyed() {
