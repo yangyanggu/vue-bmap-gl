@@ -1,3 +1,6 @@
+###v0.0.13
+ * 增加map销毁
+
 ###v0.0.12
  * 解决label组件自定义时，一直刷新问题
  * 解决custom infoWindow的offset参数无效问题
