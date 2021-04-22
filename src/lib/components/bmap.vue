@@ -123,6 +123,9 @@ export default {
         });
       });
     }
+  },
+  beforeDestroy() {
+    this.$bmap && this.$bmap.destroy();
   }
 };
 </script>
