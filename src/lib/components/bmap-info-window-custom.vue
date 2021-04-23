@@ -93,7 +93,7 @@ export default {
       this.$nextTick(() => {
         let height = this.$refs.infoWindow.offsetHeight + 11;
         let width = this.$refs.infoWindow.offsetWidth;
-        let pixel = this.$bmap.pointToPixel(this.savePosition);
+        let pixel = this.$bmap.pointToOverlayPixel(this.savePosition);
         let leftOffset = pixel.x - width / 2 + this.offset[0];
         let topOffset = pixel.y - height + this.offset[1];
         let panX = 0;
@@ -115,7 +115,7 @@ export default {
       this.$bmap.on('dragging', () => {
         this.calcPosition();
       });
-      this.$bmap.on('zooming', () => {
+      this.$bmap.on('zoomend', () => {
         this.calcPosition();
       });
       this.$bmap.on('resize', () => {
@@ -129,7 +129,7 @@ export default {
       });
     },
     calcPosition() {
-      let pixel = this.$bmap.pointToPixel(this.savePosition);
+      let pixel = this.$bmap.pointToOverlayPixel(this.savePosition);
       this.styleObj.left = (pixel.x + this.offset[0]) + 'px';
       this.styleObj.top = (pixel.y + this.offset[1]) + 'px';
     }
