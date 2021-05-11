@@ -4,7 +4,8 @@ const DEFAULT_AMP_CONFIG = {
   type: 'webgl',
   protocol: 'https',
   hostAndPath: 'api.map.baidu.com/api',
-  callback: 'bmapInitComponent'
+  callback: 'bmapInitComponent',
+  plugins: ''
 };
 
 export default class AMapAPILoader {
@@ -35,6 +36,7 @@ export default class AMapAPILoader {
         while (this._queueEvents.length) {
           this._queueEvents.pop().apply();
         }
+        this._loadPlugins();
         return resolve();
       };
       script.onerror = error => reject(error);
@@ -63,6 +65,23 @@ export default class AMapAPILoader {
       .map(entry => `${entry.key}=${entry.value}`)
       .join('&');
     return `${this._config.protocol}://${this._config.hostAndPath}?${params}`;
+  }
+
+  _loadPlugins() {
+    let plugins = this._config.plugins.split(',');
+    if (plugins.length > 0) {
+      plugins.forEach(name => {
+        let src = this._getPluginSrc(name);
+        const script = this._document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        this._document.head.appendChild(script);
+      });
+    }
+  }
+
+  _getPluginSrc(name) {
+    return `//mapopen.bj.bcebos.com/github/BMapGLLib/${name}/src/${name}.min.js`;
   }
 
 }

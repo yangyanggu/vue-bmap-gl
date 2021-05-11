@@ -40,6 +40,12 @@ export default {
     enableCloseOnClick: {
       type: Boolean,
       default: true
+    },
+    events: {
+      type: Object,
+      default() {
+        return {};
+      }
     }
   },
   data() {
@@ -59,7 +65,11 @@ export default {
           _this.calcPosition();
         },
         visible(value) {
-          _this.saveVisible = value;
+          if (_this.saveVisible !== value) {
+            _this.saveVisible = value;
+            _this.emitEvent();
+          }
+
         }
       }
     };
@@ -83,11 +93,18 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$bmapComponent = {};
+      this.$bmapComponent = {
+        on: ()=>{},
+        off: ()=>{},
+        emit: ()=>{},
+        removeEventListener: ()=>{},
+        addEventListener: ()=>{}
+      };
       this.saveVisible = this.visible;
       if (!options.position) {
         return;
       }
+      this.emitEvent();
       this.savePosition = options.position;
       this.calcPosition();
       this.$nextTick(() => {
@@ -122,9 +139,10 @@ export default {
         this.calcPosition();
       });
       this.$bmap.on('click', () => {
-        if (this.enableCloseOnClick) {
+        if (this.enableCloseOnClick && this.saveVisible === true) {
           this.saveVisible = false;
           this.$emit('update:visible', false);
+          this.emitEvent();
         }
       });
     },
@@ -132,6 +150,13 @@ export default {
       let pixel = this.$bmap.pointToOverlayPixel(this.savePosition);
       this.styleObj.left = (pixel.x + this.offset[0]) + 'px';
       this.styleObj.top = (pixel.y + this.offset[1]) + 'px';
+    },
+    emitEvent() {
+      if (this.events && this.events.close && !this.saveVisible) {
+        this.events.close();
+      } else if (this.events && this.events.open && this.saveVisible) {
+        this.events.open();
+      }
     }
   }
 };

@@ -31,7 +31,8 @@ import { lazyBMapApiLoaderInstance } from 'vue-bmap-gl';
 Vue.use(VueBMap);
 VueBMap.initBMapApiLoader({
   ak: 'YOUR_KEY',
-  v: '1.0'
+  v: '1.0',
+  plugins: 'Lushu,TrackAnimation'
 });
 
 lazyBMapApiLoaderInstance.load().then(() => {
@@ -47,6 +48,18 @@ lazyBMapApiLoaderInstance.load().then(() => {
 
 参数名  | 类型  |  默认值 | 描述 |
 --- | --- | --- | --- |
-ak | `String` | `` | 百度 Key |
+ak | `String` | '' | 百度 Key |
 v | `String` | `1.0` | SDK 版本 |
+plugins | `String` | '' | BMapGLLib扩展库，以逗号隔开，可使用的扩展见下面列表。[gitee地址](https://gitee.com/mirrors_huiyan-fe/BMapGLLib)
 
+## 扩展库列表
+库名 | 描述
+--- | --- |
+DrawingManager | [鼠标绘制工具条库](http://mapopen.bj.bcebos.com/github/BMapGLLib/DrawingManager/examples/index.html)
+DistanceTool | [测距工具](http://mapopen.bj.bcebos.com/github/BMapGLLib/DistanceTool/examples/index.html)
+GeoUtils | [测距工具](http://mapopen.bj.bcebos.com/github/BMapGLLib/DistanceTool/examples/index.html)
+TrackAnimation | [视角轨迹动画](https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/examples/index.html)
+AreaRestriction | [区域限制](https://mapopen.bj.bcebos.com/github/BMapGLLib/AreaRestriction/examples/index.html)
+InfoBox | 自定义信息窗口  [顶部展示示例](https://mapopen.bj.bcebos.com/github/BMapGLLib/InfoBox/examples/top.html)  [底部展示示例](https://mapopen.bj.bcebos.com/github/BMapGLLib/InfoBox/examples/bottom.html)
+RichMarker | 富标注 [示例1](https://bj.bcebos.com/v1/mapopen/github/BMapGLLib/RichMarker/examples/RichMarker.html)  [示例2](https://bj.bcebos.com/v1/mapopen/github/BMapGLLib/RichMarker/examples/RichMarker_Advanced.html)
+Lushu | [路书](https://bj.bcebos.com/v1/mapopen/github/BMapGLLib/Lushu/examples/index.html)

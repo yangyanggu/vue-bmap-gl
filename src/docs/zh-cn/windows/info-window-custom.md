@@ -15,6 +15,7 @@
           :is-custom="true"
           :position="currentWindow.position"
           :visible.sync="currentWindow.visible"
+          :events="{open: ()=>{open()},close: ()=>{close()}}"
           >
           <template>
             <span>{{currentWindow.content}}</span>
@@ -51,6 +52,12 @@
       },
 
       methods: {
+        open(){
+          console.log('窗口已打开')
+        },
+        close(){
+          console.log('窗口已关闭')
+        },
         switchWindow() {
           this.currentWindow.visible = !this.currentWindow.visible;
         },
@@ -96,3 +103,5 @@ isCustom | Boolean | 是否自定义，true时信息框不提供任何默认样�
 
 事件 | 参数 | 说明
 ---|---|---|
+open|  | 信息窗体打开之后触发事件
+close |  | 信息窗口被关闭时触发此事件

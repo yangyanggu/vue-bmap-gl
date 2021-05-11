@@ -3,7 +3,7 @@
  - [快速上手](zh-cn/introduction/quick-start.md)
  - [脚本初始化](zh-cn/introduction/init.md)
  - [兼容百度地图GL SDK](zh-cn/introduction/compatible.md)
- - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl)
+ - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl/blob/master/CHANGELOG.md)
 - 基础
  - [地图](zh-cn/base/bmap.md)
 
@@ -24,6 +24,9 @@
 - 扩展
   - [右击菜单](zh-cn/services/menu.md)
   - [车辆跟踪](zh-cn/services/track.md)
+  
+- BMapGLLib扩展库
+  - [扩展库使用示例](zh-cn/bmapGLLib/lushu.md)
 
 - 自定义组件
   - [组件列表](zh-cn/custom/list.md)
