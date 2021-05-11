@@ -1,3 +1,7 @@
+###v0.0.14
+ * InfoWindowCustom增加open、close事件
+ * 增加接入BMapGLLib扩展库，可以在初始化时使用plugins参数传入 [详情加载示例](https://guyangyang.gitee.io/vue-bmap-gl/#/zh-cn/introduction/init)
+
 ###v0.0.13
  * 增加map销毁
  * 修复地球模式下自定义弹框位置不准确问题
