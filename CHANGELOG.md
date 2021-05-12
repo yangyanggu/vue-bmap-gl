@@ -1,3 +1,6 @@
+###v0.0.15
+ * 紧急修复plugins加载时存在异步问题导致地图初始化后BMapGLLib组件库没有加载完成
+
 ###v0.0.14
  * InfoWindowCustom增加open、close事件
  * 增加接入BMapGLLib扩展库，可以在初始化时使用plugins参数传入 [详情加载示例](https://guyangyang.gitee.io/vue-bmap-gl/#/zh-cn/introduction/init)
