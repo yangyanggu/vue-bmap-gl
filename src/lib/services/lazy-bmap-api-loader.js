@@ -20,7 +20,6 @@ export default class AMapAPILoader {
     this._document = document;
     this._window = window;
     this._scriptLoaded = false;
-    this._queueEvents = [];
   }
 
   load() {
@@ -33,11 +32,9 @@ export default class AMapAPILoader {
 
     this._scriptLoadingPromise = new Promise((resolve, reject) => {
       this._window['bmapInitComponent'] = () => {
-        while (this._queueEvents.length) {
-          this._queueEvents.pop().apply();
-        }
-        this._loadPlugins();
-        return resolve();
+        this._loadPlugins(() => {
+          resolve();
+        });
       };
       script.onerror = error => reject(error);
     });
@@ -67,16 +64,26 @@ export default class AMapAPILoader {
     return `${this._config.protocol}://${this._config.hostAndPath}?${params}`;
   }
 
-  _loadPlugins() {
+  _loadPlugins(callback) {
     let plugins = this._config.plugins.split(',');
     if (plugins.length > 0) {
+      let pluginsLength = plugins.length;
+      let loadedNumber = 0;
       plugins.forEach(name => {
         let src = this._getPluginSrc(name);
         const script = this._document.createElement('script');
         script.type = 'text/javascript';
         script.src = src;
         this._document.head.appendChild(script);
+        script.addEventListener('load', () => {
+          loadedNumber++;
+          if (pluginsLength === loadedNumber) {
+            callback();
+          }
+        });
       });
+    } else {
+      callback();
     }
   }
 
