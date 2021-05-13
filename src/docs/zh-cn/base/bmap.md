@@ -386,7 +386,7 @@ maxZoom | Number | 地图允许展示的最大级别
 center | Array | 地图中心点坐标值
 tilt | Number | 倾斜角度
 heading | Number | 旋转角度
-mapType | MapTypeId | 地图类型,可选值：BMAP_NORMAL_MAP（普通街道视图） 、BMAP_EARTH_MAP（地球卫星视图） 
+mapType | String | 地图类型,可选值：B_NORMAL_MAP（普通街道视图） 、B_EARTH_MAP（地球卫星视图） 
 enableAutoResize | Boolean | 开启自动适应地图容器变化，默认启用
 enableDragging	| Boolean |	地图拖拽，默认启用
 enableInertialDragging | Boolean | 地图惯性拖拽，默认禁用
