@@ -65,11 +65,20 @@ export default class AMapAPILoader {
   }
 
   _loadPlugins(callback) {
+    if (!this._config.plugins || this._config.plugins.trim() === '') {
+      callback();
+      return;
+    }
     let plugins = this._config.plugins.split(',');
     if (plugins.length > 0) {
       let pluginsLength = plugins.length;
       let loadedNumber = 0;
       plugins.forEach(name => {
+        name = name.trim();
+        if (name === '') {
+          pluginsLength--;
+          return;
+        }
         let src = this._getPluginSrc(name);
         const script = this._document.createElement('script');
         script.type = 'text/javascript';
