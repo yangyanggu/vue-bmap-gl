@@ -6,6 +6,7 @@
  - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl/blob/master/CHANGELOG.md)
 - 基础
  - [地图](zh-cn/base/bmap.md)
+ - [获取map实例对象](zh-cn/base/get-bmap-instance.md)
 
 - 遮盖物
  - [点坐标](zh-cn/coverings/marker.md)
