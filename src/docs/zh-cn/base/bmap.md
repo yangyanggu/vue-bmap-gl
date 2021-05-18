@@ -339,6 +339,9 @@
             },
             'click': (e) => {
               alert('map clicked');
+            },
+            tilesloaded: (e) => {
+              console.log('tilesloaded')
             }
           },
         };
