@@ -6,21 +6,47 @@ import {lngLatTo, toLngLat} from '../utils/convert-helper';
 export default {
   name: 'el-bmap-polygon',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'path',
-    'strokeColor',
-    'strokeOpacity',
-    'strokeWeight',
-    'strokeStyle',
-    'fillColor',
-    'fillOpacity',
-    'enableMassClear',
-    'enableEditing',
-    'enableClicking',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    path: {
+      type: Array,
+      required: true
+    },
+    strokeColor: {
+      type: String
+    },
+    strokeOpacity: {
+      type: Number
+    },
+    strokeWeight: {
+      type: Number
+    },
+    strokeStyle: {
+      type: String,
+      validator: (value) => {
+        return ['solid', 'dashed'].indexOf(value) !== -1;
+      }
+    },
+    fillColor: {
+      type: String
+    },
+    fillOpacity: {
+      type: Number
+    },
+    enableMassClear: {
+      type: Boolean,
+      default: true
+    },
+    enableEditing: {
+      type: Boolean,
+      default: false
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {

@@ -9,10 +9,12 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="amapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-circle v-for="circle in circles" :center="circle.center" :visible="circle.visible" :radius="circle.radius" :fill-opacity="circle.fillOpacity" :events="circle.events" :enable-editing="circle.enableEditing"></el-bmap-circle>
+        <el-bmap-circle v-for="(circle,index) in circles" :key="index" :center="circle.center" :visible="circle.visible" :radius="circle.radius" :fill-opacity="circle.fillOpacity" :events="circle.events" :enable-editing="circle.enableEditing"></el-bmap-circle>
       </el-bmap>
-      <button @click="toggleEdit()">切换编辑状态</button>
-      <button @click="toggleVisible">切换显隐</button>
+      <div class="toolbar">
+        <button @click="toggleEdit()">切换编辑状态</button>
+        <button @click="toggleVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 

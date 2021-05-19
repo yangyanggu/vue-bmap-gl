@@ -3,14 +3,24 @@ import registerMixin from '../mixins/register-component';
 export default {
   name: 'el-bmap-menu-item',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'text',
-    'enable',
-    'width',
-    'domId',
-    'callback'
-  ],
+  props: {
+    text: {
+      type: String
+    },
+    enable: {
+      type: Boolean,
+      default: true
+    },
+    width: {
+      type: Number
+    },
+    domId: {
+      type: String
+    },
+    callback: {
+      type: Function
+    }
+  },
   data() {
     return {
       propsRedirect: {
@@ -38,6 +48,9 @@ export default {
         this.$bmapComponent.disable();
       }
     }
+  },
+  render() {
+    return null;
   },
   destroyed() {
     if (this.$bmapComponent && this.$parent.$bmapComponent) {

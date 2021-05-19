@@ -12,7 +12,7 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-label v-for="label in labels" :content="label.content" :visible="label.visible" :label-style="label.style" :offset="label.offset" :position="label.position" :events="label.events"></el-bmap-label>
+        <el-bmap-label v-for="(label,index) in labels" :key="index" :content="label.content" :visible="label.visible" :label-style="label.style" :offset="label.offset" :position="label.position" :events="label.events"></el-bmap-label>
         <el-bmap-label :position="diyLabel.position" :is-custom="true">
             <div style="color:red;font-size:20px;">diy[{{diyLabel.num}}]</div>
         </el-bmap-label>

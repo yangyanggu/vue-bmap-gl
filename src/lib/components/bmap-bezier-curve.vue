@@ -34,7 +34,8 @@ export default {
       type: Boolean
     },
     visible: {
-      type: Boolean
+      type: Boolean,
+      default: true
     },
     events: {
       type: Object

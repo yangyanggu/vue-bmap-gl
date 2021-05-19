@@ -9,11 +9,14 @@ import CONST from '../utils/constant';
 export default {
   name: 'el-bmap-menu',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {

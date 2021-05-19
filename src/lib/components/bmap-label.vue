@@ -2,38 +2,49 @@
 import registerMixin from '../mixins/register-component';
 import {toLngLat, toSize} from '../utils/convert-helper';
 import Vue from 'vue';
-import {compile, mountedRenderFn, mountedVNode} from '../utils/compile';
 
 export default {
   name: 'el-bmap-label',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'content',
-    'position',
-    'offset',
-    'title',
-    'labelStyle',
-    'enableMassClear',
-    'visible',
-    'events',
-    'onceEvents',
-    'template',
-    'vnode',
-    'contentRender',
-    'isCustom' // 是否是自定义样式
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    content: {
+      type: String
+    },
+    position: {
+      type: Array
+    },
+    offset: {
+      type: Array
+    },
+    title: {
+      type: String
+    },
+    labelStyle: {
+      type: Object
+    },
+    enableMassClear: {
+      type: Boolean
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    events: {
+      type: Object
+    },
+    isCustom: {
+      type: Boolean
+    }
+  },
   data() {
-    let self = this;
-
     return {
       preHtml: '',
       tmpVM: null,
       propsRedirect: {
-        labelStyle: 'style',
-        template: 'content',
-        vnode: 'content',
-        contentRender: 'content'
+        labelStyle: 'style'
       },
       converters: {
         position(arr) {
@@ -41,22 +52,6 @@ export default {
         },
         offset(arr) {
           return toSize(arr);
-        },
-        template(tpl) {
-          const template = compile(tpl, self);
-          this.$customContent = template;
-          return template.$el;
-        },
-        vnode(vnode) {
-          const _vNode = typeof vnode === 'function' ? vnode(self) : vnode;
-          const vNode = mountedVNode(_vNode);
-          this.$customContent = vNode;
-          return vNode.$el;
-        },
-        contentRender(renderFn) {
-          const template = mountedRenderFn(renderFn, self);
-          this.$customContent = template;
-          return template.$el;
         }
       },
       handlers: {
@@ -65,12 +60,6 @@ export default {
         },
         position(value) {
           this.setPosition(value);
-        },
-        template(node) {
-          this.setContent(node.outerHTML);
-        },
-        content(content) {
-          this.setContent(content);
         }
       }
     };

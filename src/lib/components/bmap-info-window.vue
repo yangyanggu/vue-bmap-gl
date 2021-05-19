@@ -1,28 +1,49 @@
 <script>
 import {toLngLat, toSize} from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
-import { compile, mountedVNode, mountedRenderFn } from '../utils/compile';
 import Vue from 'vue';
 export default {
   name: 'el-bmap-info-window',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'title',
-    'content',
-    'width',
-    'height',
-    'maxWidth',
-    'offset',
-    'position',
-    'visible',
-    'enableAutoPan',
-    'enableCloseOnClick',
-    'events',
-    'template',
-    'vnode',
-    'contentRender'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    title: {
+      type: [String, HTMLElement]
+    },
+    content: {
+      type: [String, HTMLElement]
+    },
+    width: {
+      type: Number
+    },
+    height: {
+      type: Number
+    },
+    maxWidth: {
+      type: Number
+    },
+    offset: {
+      type: Array
+    },
+    position: {
+      type: Array
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    enableAutoPan: {
+      type: Boolean
+    },
+    enableCloseOnClick: {
+      type: Boolean
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     let self = this;
     return {
@@ -34,22 +55,6 @@ export default {
         contentRender: 'content'
       },
       converters: {
-        template(tpl) {
-          const template = compile(tpl, self);
-          this.$customContent = template;
-          return template.$el;
-        },
-        vnode(vnode) {
-          const _vNode = typeof vnode === 'function' ? vnode(self) : vnode;
-          const vNode = mountedVNode(_vNode);
-          this.$customContent = vNode;
-          return vNode.$el;
-        },
-        contentRender(renderFn) {
-          const template = mountedRenderFn(renderFn, self);
-          this.$customContent = template;
-          return template.$el;
-        },
         offset(arr) {
           return toSize(arr);
         }

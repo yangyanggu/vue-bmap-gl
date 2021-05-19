@@ -19,9 +19,11 @@
           </template>
         </el-bmap-info-window>
       </el-bmap>
-      <button @click="switchWindow(0)">Show First Window</button>
-      <button @click="switchWindow(1)">Show Second Window</button>
-      <button @click="changePosition()">修改弹出框位置</button>
+      <div class="toolbar">
+        <button @click="switchWindow(0)">Show First Window</button>
+        <button @click="switchWindow(1)">Show Second Window</button>
+        <button @click="changePosition()">修改弹出框位置</button>
+      </div>
     </div>
   </template>
 
@@ -119,9 +121,6 @@ position | Array[x,y] | 信息窗体显示基点位置
 offset | Array[x,y] | 信息窗位置偏移值。默认情况下在地图上打开的信息窗底端的尖角将指向其地理坐标，在标注上打开的信息窗底端尖角的位置取决于标注所用图标的infoWindowOffset属性值，您可以为信息窗添加偏移量来改变默认位置
 enableAutoPan | Boolean | 是否开启信息窗口打开时地图自动移动（默认开启）
 enableCloseOnClick | Boolean | 是否开启点击地图关闭信息窗口（默认开启）
-template | String | 支持传入 Vue 模板。`v0.4.0` 开始支持。
-vnode | VNode  或 Funtion: (Instance) => VNode | 支持 VNode 渲染。`v0.4.2` 开始支持
-contentRender | Function: (createElement: () => VNode, instance) => VNode | 支持 VNode render 渲染。`v0.4.3` 开始支持
 visible | Boolean | 信息窗体是否显示。**这里需要注意的是，百度地图只支持同时一个信息窗体的显示**。所以一旦有窗体显示切换的场景，visible数组的状态需要自行维护。
 
 

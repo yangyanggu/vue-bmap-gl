@@ -22,8 +22,10 @@
           </template>
         </el-bmap-info-window-custom>
       </el-bmap>
-      <button @click="switchWindow">切换显隐</button>
-      <button @click="changePosition()">修改弹出框位置</button>
+      <div class="toolbar">
+        <button @click="switchWindow">切换显隐</button>
+        <button @click="changePosition()">修改弹出框位置</button>
+      </div>
     </div>
   </template>
 
@@ -99,7 +101,6 @@ isCustom | Boolean | 是否自定义，true时信息框不提供任何默认样�
 ---|---|---|
 
 ## 事件
-暂时未提供事件，需要事件可以提需求
 
 事件 | 参数 | 说明
 ---|---|---|

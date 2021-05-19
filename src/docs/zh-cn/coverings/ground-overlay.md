@@ -10,9 +10,11 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmap" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-ground-overlay v-for="groundimage in groundimages" :url="groundimage.url" :visible="groundimage.visible" :bounds="groundimage.bounds" :min-level="1" :max-level="21" :events="groundimage.events"></el-bmap-ground-overlay>
+        <el-bmap-ground-overlay v-for="(groundimage,index) in groundimages" :key="index" :url="groundimage.url" :visible="groundimage.visible" :bounds="groundimage.bounds" :events="groundimage.events"></el-bmap-ground-overlay>
       </el-bmap>
-      <button @click="toggleVisible">切换显隐</button>
+      <div class="toolbar">
+        <button @click="toggleVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 
@@ -71,10 +73,9 @@ events | Object | 事件，key值为事件名称，提供默认的init事件，�
 名称 | 类型 | 说明
 ---|---|---|
 bounds | Array [[x,y],[x,y]] | 区域
-url | String | 图片路径
+type | String | 'video' 、 'canvas'，默认为image
+url | String Canvas | 图片、视频 url 或 自定义的canvas对象
 opacity | Number | 图片透明度，取值范围[0,1]，0表示完全透明，1表示不透明默认值：1
-minLevel | Number | 显示图片的最小级别
-maxLevel | Number | 显示图片的最大级别
 visible | Boolean | 覆盖物显隐控制,默认true
 
 ## ref 可用方法

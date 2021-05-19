@@ -10,7 +10,7 @@
     <div class="amap-page-container">
       <el-bmap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
         <el-bmap-marker vid="component-marker" :position="componentMarker.position" ></el-bmap-marker>
-        <el-bmap-marker v-for="(marker, index) in markers" :icon="marker.icon" :visible="marker.visible" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
+        <el-bmap-marker v-for="(marker, index) in markers" :key="index" :icon="marker.icon" :visible="marker.visible" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
       </el-bmap>
       <div class="toolbar">
         <button type="button" name="button" v-on:click="changePosition">change position</button>

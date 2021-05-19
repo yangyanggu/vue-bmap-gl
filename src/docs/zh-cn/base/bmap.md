@@ -327,6 +327,7 @@
           tilt: 60,
           heading: 0,
           darkStyle,
+          timer: null,
           events: {
             init: (o) => {
               console.log(o.getCenter())
@@ -347,6 +348,11 @@
         };
       },
       mounted() {
+        let change = () =>{
+          clearTimeout(this.timer);
+          window.removeEventListener('hashchange',change)
+        }
+        window.addEventListener('hashchange',change)
       },
       methods: {
         getMap() {
@@ -356,10 +362,9 @@
           console.log(bmapManager._map);
         },
         panMap() {
-            setTimeout( () => {
+            this.timer = setTimeout( () => {
                 this.center = [(this.center[0]+0.0001), this.center[1]];
                 this.panMap();
-                console.log(this.center)
             },1000);
         }
       }
@@ -403,7 +408,7 @@ enableRotateGestures | Boolean | 允许通过手势旋转地图
 enableTiltGestures | Boolean | 允许通过手势倾斜地图
 bounds | [Bounds](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_webgl_1_0.html#a1b2) | 地图当前视野范围的矩形区域，以地理坐标表示
 draggingCursor | String | 拖拽地图时的鼠标指针样式
-mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象
+mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象，示例：{styleId:'', styleJson: {}},参数二选一使用
 trafficVisible | Boolean | 设置是否显示交通流量图层
 defaultCursor | String | 设置地图默认的鼠标指针样式。参数cursor应符合CSS的cursor属性规范
 
