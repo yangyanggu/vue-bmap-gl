@@ -10,9 +10,12 @@
     <div class="bmap-page-container">
       <el-bmap ref="map" vid="bmapDemo" :bmap-manager="bmapManager" :min-zoom="10" :max-zoom="22" :center="center" :zoom="zoom" class="bmap-demo">
         <el-bmap-menu>
-            <el-bmap-menu-item v-for="(item,index) in menus" :key="index" :text="item.text" :callback="item.callback" ></el-bmap-menu-item>
+            <el-bmap-menu-item v-for="(item,index) in menus" :key="index" :enable="item.enable" :text="item.text" :callback="item.callback" ></el-bmap-menu-item>
         </el-bmap-menu>
       </el-bmap>
+      <div class="toolbar">
+        <button @click="switchEnable">切换缩小按钮的enable</button>
+      </div>
     </div>
   </template>
 
@@ -38,13 +41,15 @@
                 callback(e){
                     console.log(e);
                     bmapManager.getMap().zoomOut();
-                }
+                },
+                enable: true
             },
             {
                 text: '缩小',
                 callback(){
                     bmapManager.getMap().zoomIn();
-                }
+                },
+                enable: false
             }
           ]
         };
@@ -52,6 +57,9 @@
       mounted() {
       },
       methods: {
+        switchEnable(){
+          this.menus[1].enable = !this.menus[1].enable;
+        }
       }
     };
   </script>

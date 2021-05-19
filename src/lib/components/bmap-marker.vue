@@ -9,23 +9,53 @@ import {
 export default {
   name: 'el-bmap-marker',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'position',
-    'offset',
-    'icon',
-    'enableMassClear',
-    'enableDragging',
-    'enableClicking',
-    'raiseOnDrag',
-    'draggingCursor',
-    'visible',
-    'rotation',
-    'title',
-    'label',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    position: {
+      type: Array,
+      required: true
+    },
+    offset: {
+      type: Array
+    },
+    icon: {
+      type: Object
+    },
+    enableMassClear: {
+      type: Boolean
+    },
+    enableDragging: {
+      type: Boolean
+    },
+    enableClicking: {
+      type: Boolean
+    },
+    raiseOnDrag: {
+      type: Boolean,
+      default: false
+    },
+    draggingCursor: {
+      type: String
+    },
+    rotation: {
+      type: Number
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    title: {
+      type: String
+    },
+    label: {
+      type: Object
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {

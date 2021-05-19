@@ -4,23 +4,38 @@ import registerMixin from '../mixins/register-component';
 export default {
   name: 'el-bmap-ground-overlay',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'opacity',
-    'url',
-    'bounds',
-    'minLevel',
-    'maxLevel',
-    'visible',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    opacity: {
+      type: Number
+    },
+    type: {
+      type: String,
+      validator: (value) => {
+        return ['image', 'video', 'canvas'].indexOf(value) !== -1;
+      }
+    },
+    url: {
+      type: [String, HTMLElement],
+      required: true
+    },
+    bounds: {
+      type: Array,
+      required: true
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       propsRedirect: {
-        minLevel: 'displayOnMinLevel',
-        maxLevel: 'displayOnMaxLevel',
-        url: 'imageURL'
       },
       converters: {
         bounds(arr) {
@@ -44,6 +59,9 @@ export default {
         });
       }
     }
+  },
+  render() {
+    return null;
   },
   destroyed() {
     if (this.$bmapComponent && this.$bmapComponent.getMap()) {

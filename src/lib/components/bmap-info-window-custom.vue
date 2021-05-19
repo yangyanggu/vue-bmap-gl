@@ -11,7 +11,7 @@ export default {
   mixins: [registerMixin],
   props: {
     vid: {
-      type: String
+      type: [String, Number]
     },
     offset: {
       type: Array,

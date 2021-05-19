@@ -6,18 +6,36 @@ import {lngLatTo, toLngLat} from '../utils/convert-helper';
 export default {
   name: 'el-bmap-prism',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'path',
-    'altitude',
-    'topFillColor',
-    'topFillOpacity',
-    'sideFillColor',
-    'sideFillOpacity',
-    'enableMassClear',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    path: {
+      type: Array,
+      required: true
+    },
+    altitude: {
+      type: Number
+    },
+    topFillColor: {
+      type: String
+    },
+    topFillOpacity: {
+      type: Number
+    },
+    sideFillColor: {
+      type: String
+    },
+    sideFillOpacity: {
+      type: Number
+    },
+    enableMassClear: {
+      type: Boolean
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {

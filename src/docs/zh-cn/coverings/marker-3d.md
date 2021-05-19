@@ -9,7 +9,7 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-marker-3d v-for="(marker, index) in markers" :icon="marker.icon" :position="marker.position" :size="marker.size" :height="marker.height" :events="marker.events" :visible="marker.visible" :vid="index" ></el-bmap-marker-3d>
+        <el-bmap-marker-3d v-for="(marker, index) in markers" :key="index" :icon="marker.icon" :position="marker.position" :size="marker.size" :height="marker.height" :events="marker.events" :visible="marker.visible" :vid="index" ></el-bmap-marker-3d>
       </el-bmap>
       <div class="toolbar">
         <button type="button" name="button" v-on:click="changePosition">change position</button>

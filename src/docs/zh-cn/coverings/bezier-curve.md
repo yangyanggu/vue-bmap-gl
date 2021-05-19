@@ -9,9 +9,11 @@
 <template>
   <div class="bmap-page-container">
       <el-bmap vid="bmapDemo" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-bezier-curve v-for="line in lines" :events="line.events" :visible="line.visible" :path="line.path" :control-points="line.controlPoints" :stroke-color="line.strokeColor" :stroke-style="line.strokeStyle" :events="line.events" :stroke-opacity="line.strokeOpacity"></el-bmap-bezier-curve>
+        <el-bmap-bezier-curve v-for="(line,index) in lines" :key="index" :events="line.events" :visible="line.visible" :path="line.path" :control-points="line.controlPoints" :stroke-color="line.strokeColor" :stroke-style="line.strokeStyle" :events="line.events" :stroke-opacity="line.strokeOpacity"></el-bmap-bezier-curve>
       </el-bmap>
-      <button @click="toggleVisible">切换显隐</button>
+      <div class="toolbar">
+        <button @click="toggleVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 

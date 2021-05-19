@@ -38,7 +38,7 @@ VueBMap.initBMapApiLoader({
 lazyBMapApiLoaderInstance.load().then(() => {
   // your code ...
   this.map = new BMapGL.Map('bmapContainer', {
-    center: new BMapGL.LngLat(121.59996, 31.197646)
+    center: new BMapGL.Point(121.59996, 31.197646)
   });
 });
 ```

@@ -5,19 +5,42 @@ import {lngLatTo, toLngLat} from '../utils/convert-helper';
 export default {
   name: 'el-bmap-bezier-curve',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'path',
-    'controlPoints',
-    'strokeColor',
-    'strokeOpacity',
-    'strokeWeight',
-    'strokeStyle',
-    'enableMassClear',
-    'visible',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    path: {
+      type: Array
+    },
+    controlPoints: {
+      type: Array
+    },
+    strokeColor: {
+      type: String
+    },
+    strokeOpacity: {
+      type: Number
+    },
+    strokeWeight: {
+      type: Number
+    },
+    strokeStyle: {
+      type: String,
+      validator: (value) => {
+        return ['solid', 'dashed'].indexOf(value) !== -1;
+      }
+    },
+    enableMassClear: {
+      type: Boolean
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {
@@ -54,6 +77,9 @@ export default {
     $$getControlPoints() {
       return this.$bmapComponent.getControlPoints().map(lngLatTo);
     }
+  },
+  render() {
+    return null;
   },
   destroyed() {
     if (this.$bmapComponent && this.$bmapComponent.getMap()) {

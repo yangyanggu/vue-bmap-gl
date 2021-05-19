@@ -10,39 +10,100 @@ import CONST from '../utils/constant';
 import { toLngLat } from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
 import {lazyBMapApiLoaderInstance} from '../services/injected-bmap-api-instance';
+import BmapManager from '../managers/bmap-manager';
 
 export default {
   name: 'el-bmap',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'events',
-    'center',
-    'zoom',
-    'minZoom',
-    'maxZoom',
-    'mapType',
-    'tilt', // 倾斜角度
-    'heading', // 旋转角度
-    'enableAutoResize',
-    'enableDragging',
-    'enableInertialDragging',
-    'enableScrollWheelZoom',
-    'enableContinuousZoom',
-    'enableResizeOnCenter',
-    'enableDoubleClickZoom',
-    'enableKeyboard',
-    'enablePinchToZoom',
-    'enableRotateGestures',
-    'enableTiltGestures',
-    'bounds',
-    'draggingCursor',
-    'defaultCursor',
-    'mapStyleV2',
-    'trafficVisible',
-    'bmapManager', // 地图管理 manager
-    'events'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    center: {
+      type: Array,
+      validator: (value) => {
+        // 这个值必须匹配下列字符串中的一个
+        return value && value.length === 2;
+      }
+    },
+    zoom: {
+      type: Number
+    },
+    minZoom: {
+      type: Number
+    },
+    maxZoom: {
+      type: Number
+    },
+    mapType: {
+      type: String,
+      validator: (value) => {
+        // B_NORMAL_MAP（普通街道视图） 、B_EARTH_MAP（地球卫星视图）
+        return ['B_NORMAL_MAP', 'B_EARTH_MAP'].indexOf(value) !== -1;
+      }
+    },
+    tilt: {
+      type: Number
+    },
+    heading: {
+      type: Number
+    },
+    enableAutoResize: {
+      type: Boolean
+    },
+    enableDragging: {
+      type: Boolean
+    },
+    enableInertialDragging: {
+      type: Boolean
+    },
+    enableScrollWheelZoom: {
+      type: Boolean,
+      default: true
+    },
+    enableContinuousZoom: {
+      type: Boolean
+    },
+    enableResizeOnCenter: {
+      type: Boolean
+    },
+    enableDoubleClickZoom: {
+      type: Boolean
+    },
+    enableKeyboard: {
+      type: Boolean
+    },
+    enablePinchToZoom: {
+      type: Boolean
+    },
+    enableRotateGestures: {
+      type: Boolean
+    },
+    enableTiltGestures: {
+      type: Boolean
+    },
+    bounds: {
+      type: Array
+    },
+    draggingCursor: {
+      type: String
+    },
+    defaultCursor: {
+      type: String
+    },
+    mapStyleV2: {
+      type: Object // {styleId: '', styleJson:{}} ,二选一
+    },
+    trafficVisible: {
+      type: Boolean
+    },
+    bmapManager: {
+      type: BmapManager
+    },
+    events: {
+      type: Object
+    }
+  },
 
   beforeCreate() {
     this._loadPromise = lazyBMapApiLoaderInstance.load();
@@ -60,6 +121,9 @@ export default {
       converters: {
         center(arr) {
           return toLngLat(arr);
+        },
+        bounds(arr) {
+          return new BMapGL.Bounds(toLngLat(arr[0]), toLngLat(arr[1]));
         }
       },
       handlers: {
@@ -116,6 +180,18 @@ export default {
         if (props.defaultCursor) {
           this.$bmap.setDefaultCursor(props.defaultCursor);
         }
+        if (props.bounds) {
+          this.$bmap.setBounds(props.bounds);
+        }
+        let propKeys = Object.keys(props);
+        propKeys.forEach(key => {
+          if (key.startsWith('enable')) {
+            let func = this.getHandlerFun(key);
+            if (func) {
+              func(props[key]);
+            }
+          }
+        });
         if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
         this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
         this.$children.forEach(component => {

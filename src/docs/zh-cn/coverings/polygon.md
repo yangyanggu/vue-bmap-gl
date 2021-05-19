@@ -11,7 +11,7 @@
       <el-bmap vid="bmap" :zoom="zoom" :bmap-manager="bmapManager" :center="center"
       ref="map"
       class="bmap-demo">
-        <el-bmap-polygon v-for="(polygon, index) in polygons" :vid="index" :ref="`polygon_${index}`" :path="polygon.path" :enable-editing="polygon.enableEditing" :events="polygon.events"></el-bmap-polygon>
+        <el-bmap-polygon v-for="(polygon, index) in polygons" :key="index" :vid="index" :ref="`polygon_${index}`" :path="polygon.path" :enable-editing="polygon.enableEditing" :events="polygon.events"></el-bmap-polygon>
       </el-bmap>
     </div>
   </template>

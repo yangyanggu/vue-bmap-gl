@@ -9,18 +9,40 @@ import {
 export default {
   name: 'el-bmap-marker-3d',
   mixins: [registerMixin],
-  props: [
-    'vid',
-    'height',
-    'position',
-    'size',
-    'icon',
-    'shape',
-    'fillColor',
-    'fillOpacity',
-    'events',
-    'onceEvents'
-  ],
+  props: {
+    vid: {
+      type: [String, Number]
+    },
+    height: {
+      type: Number,
+      default: 0,
+      required: true
+    },
+    position: {
+      type: Array
+    },
+    size: {
+      type: Number
+    },
+    icon: {
+      type: Object
+    },
+    shape: {
+      type: Number,
+      validator: (value) => {
+        return [1, 2].indexOf(value) !== -1;
+      }
+    },
+    fillColor: {
+      type: String
+    },
+    fillOpacity: {
+      type: Number
+    },
+    events: {
+      type: Object
+    }
+  },
   data() {
     return {
       converters: {

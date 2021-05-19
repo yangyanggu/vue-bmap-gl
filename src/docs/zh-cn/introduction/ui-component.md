@@ -1,6 +1,6 @@
-# 引入高德 UI 组件库
+# 引入百度 UI 组件库
 
-支持引入高德 UI 组件库，如下，只需在初始化的时候添加 `uiVersion` 的脚本版本号，就能轻松完成脚本的加载及初始化，版本号参考[官方介绍](http://lbs.amap.com/api/javascript-api/guide/amap-ui/intro)
+支持引入百度 UI 组件库，如下，只需在初始化的时候添加 `uiVersion` 的脚本版本号，就能轻松完成脚本的加载及初始化，版本号参考[官方介绍](http://lbs.amap.com/api/javascript-api/guide/amap-ui/intro)
 
   注：官方组件库出来不久，暂时不会封装。
 
