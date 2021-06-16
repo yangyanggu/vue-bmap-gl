@@ -1,5 +1,4 @@
-## 文档临时地址更新： http://139.196.97.190/vue-bmap-gl/
-### 由于文档被gitee净网行动给封了，现在开一个临时文档地址，等个人网站备案下来后切换至正式域名地址
+## 文档地址更新： https://docs.guyixi.cn/vue-bmap-gl/#/
 
 <p align="center">
   <img src="https://cdn.rawgit.com/ElemeFE/vue-amap/master/src/docs/assets/images/logo.png">
@@ -29,7 +28,7 @@ npm install -S vue-bmap-gl
 ```
 
 ## 文档
-[https://guyangyang.gitee.io/vue-bmap-gl/#/](https://guyangyang.gitee.io/vue-bmap-gl/#/)
+[https://docs.guyixi.cn/vue-bmap-gl/#/](https://docs.guyixi.cn/vue-bmap-gl/#/)
 
 
 ## 快速上手
