@@ -4,6 +4,7 @@
  - [脚本初始化](zh-cn/introduction/init.md)
  - [兼容百度地图GL SDK](zh-cn/introduction/compatible.md)
  - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl/blob/master/CHANGELOG.md)
+ - [捐赠支持](zh-cn/other/donation.md)
 - 基础
  - [地图](zh-cn/base/bmap.md)
  - [获取map实例对象](zh-cn/base/get-bmap-instance.md)
