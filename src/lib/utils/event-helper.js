@@ -29,11 +29,11 @@ class EventHelper {
     let listenerArr = this._listener.get(instance)[eventName];
     if (handler) {
       let l_index = listenerArr.indexOf(handler);
-      instance.off(listenerArr[l_index]);
+      instance.removeEventListener(eventName, listenerArr[l_index]);
       listenerArr.splice(l_index, 1);
     } else {
       listenerArr.forEach(listener => {
-        instance.off(listener);
+        instance.removeEventListener(eventName, listener);
       });
       this._listener.get(instance)[eventName] = [];
     }
@@ -49,7 +49,11 @@ class EventHelper {
     let listeners = this._listener.get(instance);
     if (!listeners) return;
     Object.keys(listeners).map(eventName => {
-      instance.removeEventListener(eventName);
+      let funcs = listeners[eventName];
+      funcs.forEach(func => {
+        instance.removeEventListener(eventName, func);
+      });
+
     });
   }
 };
