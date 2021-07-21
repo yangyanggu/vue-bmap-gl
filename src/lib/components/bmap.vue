@@ -201,7 +201,11 @@ export default {
     }
   },
   beforeDestroy() {
-    this.$bmap && this.$bmap.destroy();
+    if (this.$bmap) {
+      this.$bmap.clearOverlays();
+      this.$bmap.destroy();
+      this.$bmap = null;
+    }
   }
 };
 </script>

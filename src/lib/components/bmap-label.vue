@@ -115,8 +115,13 @@ export default {
     });
   },
   destroyed() {
+    if (this.tmpVM) {
+      this.tmpVM.$destroy();
+    }
     if (this.$bmapComponent && this.$bmapComponent.getMap()) {
       this.$bmapComponent.getMap().removeOverlay(this.$bmapComponent);
+      this.$bmapComponent = null;
+      this.tmpVM = null;
     }
   },
   render() {

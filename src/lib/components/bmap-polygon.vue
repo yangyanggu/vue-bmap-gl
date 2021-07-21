@@ -78,6 +78,7 @@ export default {
   destroyed() {
     if (this.$bmapComponent && this.$bmapComponent.getMap()) {
       this.$bmapComponent.getMap().removeOverlay(this.$bmapComponent);
+      this.$bmapComponent = null;
     }
   }
 };

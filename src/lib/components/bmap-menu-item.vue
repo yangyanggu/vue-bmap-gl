@@ -55,6 +55,7 @@ export default {
   destroyed() {
     if (this.$bmapComponent && this.$parent.$bmapComponent) {
       this.$parent.$bmapComponent.removeItem(this.$bmapComponent);
+      this.$bmapComponent = null;
     }
   }
 };

@@ -98,8 +98,11 @@ export default {
   destroyed() {
     this.$bmap.closeInfoWindow();
     this.tmpVM.$destroy();
+    this.tmpVM = null;
     if (this.$customContent && this.$customContent.$destroy) {
       this.$customContent.$destroy();
+      this.$bmapComponent = null;
+
     }
   },
   methods: {

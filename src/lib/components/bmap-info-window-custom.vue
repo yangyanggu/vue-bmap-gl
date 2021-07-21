@@ -90,6 +90,8 @@ export default {
   created() {
   },
   destroyed() {
+    this.unBindEvent();
+    this.$bmapComponent = null;
   },
   methods: {
     __initComponent(options) {
@@ -125,26 +127,40 @@ export default {
           this.$bmap.panBy(panX, panY);
         }
       });
-
-      this.$bmap.on('moving', () => {
-        this.calcPosition();
-      });
-      this.$bmap.on('dragging', () => {
-        this.calcPosition();
-      });
-      this.$bmap.on('zoomend', () => {
-        this.calcPosition();
-      });
-      this.$bmap.on('resize', () => {
-        this.calcPosition();
-      });
-      this.$bmap.on('click', () => {
-        if (this.enableCloseOnClick && this.saveVisible === true) {
-          this.saveVisible = false;
-          this.$emit('update:visible', false);
-          this.emitEvent();
-        }
-      });
+      this.bindEvent();
+    },
+    bindEvent() {
+      this.$bmap.on('moving', this.moveMap);
+      this.$bmap.on('dragging', this.draggingMap);
+      this.$bmap.on('zoomend', this.zoomendMap);
+      this.$bmap.on('resize', this.resizeMap);
+      this.$bmap.on('click', this.clickMap);
+    },
+    unBindEvent() {
+      this.$bmap.off('moving', this.moveMap);
+      this.$bmap.off('dragging', this.draggingMap);
+      this.$bmap.off('zoomend', this.zoomendMap);
+      this.$bmap.off('resize', this.resizeMap);
+      this.$bmap.off('click', this.clickMap);
+    },
+    moveMap() {
+      this.calcPosition();
+    },
+    draggingMap() {
+      this.calcPosition();
+    },
+    zoomendMap() {
+      this.calcPosition();
+    },
+    resizeMap() {
+      this.calcPosition();
+    },
+    clickMap() {
+      if (this.enableCloseOnClick && this.saveVisible === true) {
+        this.saveVisible = false;
+        this.$emit('update:visible', false);
+        this.emitEvent();
+      }
     },
     calcPosition() {
       let pixel = this.$bmap.pointToOverlayPixel(this.savePosition);
