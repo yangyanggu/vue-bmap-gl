@@ -102,6 +102,10 @@ export default {
     },
     events: {
       type: Object
+    },
+    lazy: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -153,50 +157,55 @@ export default {
   },
 
   mounted() {
-    this.createMap();
+    this.lazyLoadMap();
   },
   methods: {
-    createMap() {
+    lazyLoadMap() {
       this._loadPromise.then(() => {
-        let mapElement = this.$el.querySelector('.el-vue-bmap');
-        const elementID = this.vid || guid();
-        mapElement.id = elementID;
-        let props = this.convertProps();
-        this.$bmap = this.$bmapComponent = new BMapGL.Map(elementID, props);
-        this.$bmap.centerAndZoom(toLngLat(this.center), this.zoom);
-        this.$bmap.enableScrollWheelZoom(true);
-        if (props.tilt !== undefined) {
-          this.$bmap.setTilt(props.tilt);
-        }
-        if (props.heading !== undefined) {
-          this.$bmap.setHeading(props.heading);
-        }
-        if (props.trafficVisible) {
-          this.$bmap.setTrafficOn();
-        }
-        if (props.mapStyleV2) {
-          this.$bmap.setMapStyleV2(props.mapStyleV2);
-        }
-        if (props.defaultCursor) {
-          this.$bmap.setDefaultCursor(props.defaultCursor);
-        }
-        if (props.bounds) {
-          this.$bmap.setBounds(props.bounds);
-        }
-        let propKeys = Object.keys(props);
-        propKeys.forEach(key => {
-          if (key.startsWith('enable')) {
-            let func = this.getHandlerFun(key);
-            if (func) {
-              func(props[key]);
-            }
+        setTimeout(() => {
+          this.createMap();
+        }, this.lazy);
+      });
+    },
+    createMap() {
+      let mapElement = this.$el.querySelector('.el-vue-bmap');
+      const elementID = this.vid || guid();
+      mapElement.id = elementID;
+      let props = this.convertProps();
+      this.$bmap = this.$bmapComponent = new BMapGL.Map(elementID, props);
+      this.$bmap.centerAndZoom(toLngLat(this.center), this.zoom);
+      this.$bmap.enableScrollWheelZoom(true);
+      if (props.tilt !== undefined) {
+        this.$bmap.setTilt(props.tilt);
+      }
+      if (props.heading !== undefined) {
+        this.$bmap.setHeading(props.heading);
+      }
+      if (props.trafficVisible) {
+        this.$bmap.setTrafficOn();
+      }
+      if (props.mapStyleV2) {
+        this.$bmap.setMapStyleV2(props.mapStyleV2);
+      }
+      if (props.defaultCursor) {
+        this.$bmap.setDefaultCursor(props.defaultCursor);
+      }
+      if (props.bounds) {
+        this.$bmap.setBounds(props.bounds);
+      }
+      let propKeys = Object.keys(props);
+      propKeys.forEach(key => {
+        if (key.startsWith('enable')) {
+          let func = this.getHandlerFun(key);
+          if (func) {
+            func(props[key]);
           }
-        });
-        if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
-        this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
-        this.$children.forEach(component => {
-          component.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
-        });
+        }
+      });
+      if (this.bmapManager) this.bmapManager.setMap(this.$bmap);
+      this.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
+      this.$children.forEach(component => {
+        component.$emit(CONST.BMAP_READY_EVENT, this.$bmap);
       });
     }
   },
