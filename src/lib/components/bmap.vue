@@ -105,7 +105,7 @@ export default {
     },
     lazy: {
       type: Number,
-      default: 0
+      default: -1
     }
   },
 
@@ -162,9 +162,14 @@ export default {
   methods: {
     lazyLoadMap() {
       this._loadPromise.then(() => {
-        setTimeout(() => {
+        if (this.lazy < 0) {
           this.createMap();
-        }, this.lazy);
+        } else {
+          setTimeout(() => {
+            this.createMap();
+          }, this.lazy);
+        }
+
       });
     },
     createMap() {

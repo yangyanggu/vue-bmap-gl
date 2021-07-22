@@ -381,7 +381,7 @@
 vid | String | 组件的ID。
 bmapManager| BMapManager | 地图管理对象。
 events | Object | 事件
-lazy | Number | 延时加载地图，单位 毫秒，默认0
+lazy | Number | 延时加载地图，单位 毫秒，默认-1,不进行延时加载
 
 ## 动态属性
 
