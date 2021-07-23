@@ -122,6 +122,7 @@ export default {
 
   data() {
     return {
+      lazyTimer: null,
       converters: {
         center(arr) {
           return toLngLat(arr);
@@ -165,7 +166,7 @@ export default {
         if (this.lazy < 0) {
           this.createMap();
         } else {
-          setTimeout(() => {
+          this.lazyTimer = setTimeout(() => {
             this.createMap();
           }, this.lazy);
         }
@@ -215,6 +216,7 @@ export default {
     }
   },
   beforeDestroy() {
+    clearTimeout(this.lazyTimer);
     if (this.$bmap) {
       this.$bmap.clearOverlays();
       this.$bmap.destroy();

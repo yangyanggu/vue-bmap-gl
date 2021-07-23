@@ -1,3 +1,6 @@
+###v0.0.21
+* el-bmap-info-window-custom增加anchor属性
+
 ###v0.0.20
 * el-bmap修改lazy参数，-1不进行懒加载
 

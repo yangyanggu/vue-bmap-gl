@@ -82,7 +82,7 @@
 vid | String | 组件的ID。
 enableAutoPan | Boolean | 是否开启信息窗口打开时地图自动移动（默认开启）
 enableCloseOnClick | Boolean | 是否开启点击地图关闭信息窗口（默认开启）
-anchor | String | 锚点，默认是 bottom，可选值：auto(自动根据可显示位置进行处理，优先bottom)、top(顶部中心)、right(右侧中心)、bottom(底部中心)、left(左侧中心) 、top-left(左上角)、top-right(右上角)、bottom-left(左下角)、bottom-right(右下角)
+anchor | String | 锚点，默认是 bottom，只有当enableAutoPan为false时生效。可选值：auto(自动根据可显示位置进行处理，优先bottom)、top(顶部中心)、right(右侧中心)、bottom(底部中心)、left(左侧中心) 、top-left(左上角)、top-right(右上角)、bottom-left(左下角)、bottom-right(右下角)
 
 ## 动态属性
 
