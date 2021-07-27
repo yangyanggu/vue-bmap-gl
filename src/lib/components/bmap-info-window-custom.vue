@@ -129,6 +129,10 @@ export default {
       this.emitEvent();
       this.savePosition = options.position;
       this.calcPosition();
+      this.panMap();
+      this.bindEvent();
+    },
+    panMap() {
       if (this.enableAutoPan) {
         this.$nextTick(() => {
           let height = this.$refs.infoWindow.offsetHeight + 11;
@@ -136,20 +140,25 @@ export default {
           let pixel = this.$bmap.pointToOverlayPixel(this.savePosition);
           let leftOffset = pixel.x - width / 2 + this.offset[0];
           let topOffset = pixel.y - height + this.offset[1];
+          let mapWidth = this.mapSize.width;
+          let mapHeight = this.mapSize.height;
           let panX = 0;
           let panY = 0;
           if (leftOffset < 0) {
             panX = Math.abs(leftOffset) + 10;
+          } else if ((leftOffset + width) > mapWidth) {
+            panX = mapWidth - leftOffset - width - 10;
           }
           if (topOffset < 0) {
             panY = Math.abs(topOffset) + 10;
+          } else if ((topOffset + height) > mapHeight) {
+            panY = mapHeight - topOffset - height - 10;
           }
           if (panX !== 0 || panY !== 0) {
             this.$bmap.panBy(panX, panY);
           }
         });
       }
-      this.bindEvent();
     },
     bindEvent() {
       this.$bmap.on('moving', this.moveMap);
@@ -211,13 +220,13 @@ export default {
       let pointX = this.savePixel.x;
       let pointY = this.savePixel.y;
       let anchor = '';
-      if ((height + arrowOffset) <= pointY && (width / 2) <= pointX) {
+      if ((height + arrowOffset) <= pointY && pointY <= mapHeight && (width / 2) <= pointX && (mapWidth - pointX) >= (width / 2)) {
         anchor = 'bottom';
-      } else if ((width + arrowOffset) <= pointX && (height / 2) <= pointY) {
+      } else if ((height / 2) <= pointY && (mapWidth - pointX) <= (width / 2)) {
         anchor = 'right';
       } else if ((height + arrowOffset + pointY) <= mapHeight && (width / 2) <= pointX) {
         anchor = 'top';
-      } else if ((height / 2) <= pointY && (mapWidth - pointX) >= (width + arrowOffset)) {
+      } else if (pointX < (width / 2) && (height / 2) <= pointY && (pointY + height / 2) <= mapHeight) {
         anchor = 'left';
       }
       if (!anchor) {
