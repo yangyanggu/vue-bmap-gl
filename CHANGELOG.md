@@ -1,3 +1,7 @@
+###v0.0.22
+* 解决自定义窗口 自动pan靠右不生效问题
+* 解决地图resize时，某些情况下自定义弹出框的位置会错乱问题，由[丿王小虎](https://gitee.com/hx199808) 解决 
+
 ###v0.0.21
 * el-bmap-info-window-custom增加anchor属性
 
