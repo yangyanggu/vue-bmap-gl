@@ -185,7 +185,11 @@ export default {
     },
     resizeMap() {
       this.mapSize = this.$bmap.getContainerSize();
-      this.calcPosition();
+      let timer = setTimeout(() => {
+        this.calcPosition();
+        clearTimeout(timer);
+      }, 0);
+
     },
     clickMap() {
       if (this.enableCloseOnClick && this.saveVisible === true) {
