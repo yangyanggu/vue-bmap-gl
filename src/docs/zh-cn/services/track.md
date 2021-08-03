@@ -9,7 +9,7 @@
   <template>
     <div class="amap-page-container">
       <el-bmap vid="amapDemo" :zoom="zoom" :center="center" :tilt="75" class="amap-demo">
-        <el-bmap-track ref="track" :heading="heading"  :position="position" :auto-start="true" :only-view="true" :events="{init: ()=>{/*startMove()*/}}"></el-bmap-track>
+        <el-bmap-track ref="track" :tilt="45" :heading="heading"  :position="position" :auto-start="true" :only-view="true" :events="{init: ()=>{/*startMove()*/}}"></el-bmap-track>
       </el-bmap>
     </div>
   </template>
@@ -38,11 +38,15 @@
           center: [path[0][0], path[0][1]],
           heading: 0,
           index: 1,
-          position: [path[0][0], path[0][1]]
+          position: [path[0][0], path[0][1]],
+          timer: null,
         };
       },
       mounted(){
         this.moveCar();
+      },
+      beforeDestroy(){
+        clearTimeout(this.timer);
       },
       methods: {
         startMove(){
@@ -58,10 +62,10 @@
                 prePoint = path[this.index-1];
                 point = path[this.index];
             }
-            this.heading = bearCar(prePoint, point);
+            this.heading = 360 - bearCar(prePoint, point);
             this.position = point;
             this.index++;
-            setTimeout(() => {
+            this.timer = setTimeout(() => {
                 this.moveCar();
             }, 1000)
         }

@@ -6,8 +6,6 @@
 <script>
 import registerMixin from '../mixins/register-component';
 
-let _this = null;
-
 export default {
   name: 'el-bmap-track',
   mixins: [registerMixin],
@@ -34,7 +32,11 @@ export default {
     },
     heading: {
       type: Number,
-      default: 0
+      default: -1
+    },
+    tilt: {
+      type: Number,
+      default: -1
     },
     autoStart: {
       type: Boolean,
@@ -46,6 +48,7 @@ export default {
 
   },
   data() {
+    const _this = this;
     return {
       mapSize: {
         width: 0,
@@ -56,7 +59,6 @@ export default {
         y: 0
       },
       iconVisible: false,
-      tilt: 0,
       pixelLngLatScale: {
         x: 1,
         y: 1
@@ -75,12 +77,8 @@ export default {
         position(newValue) {
           if (_this && _this.iconVisible && this.isLoaded()) {
             let p = new BMapGL.Point(newValue[0], newValue[1]);
-            let tilt = this.getTilt();
-            let heading = this.getHeading();
             let options = {
-              noAnimation: false,
-              tilt,
-              heading
+              noAnimation: true
             };
             this.setCenter(p, options);
           }
@@ -88,7 +86,15 @@ export default {
         offset() {
 
         },
-        heading() {
+        heading(newHeading) {
+          this.setHeading(newHeading, {
+            noAnimation: true
+          });
+        },
+        tilt(newTilt) {
+          this.setTilt(newTilt, {
+            noAnimation: true
+          });
         },
         onlyView(flag) {
           if (flag) {
@@ -129,7 +135,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      _this = this;
       let map = options.map;
       this.mapSize = map.getContainerSize();
       if (this.offset && this.offset.length > 0) {
@@ -151,7 +156,6 @@ export default {
     },
 
     start() {
-      this.iconVisible = true;
       let map = this.map;
       let container = map.getContainer();
       let parent = container.parentNode;
@@ -165,12 +169,20 @@ export default {
       container.style.width = (this.mapSize.width + offset[0] * 2) + 'px';
       container.style.height = (this.mapSize.height + offset[1] * 2) + 'px';
       map.resize();
-      let tilt = this.$parent.tilt || 0;
-      this.tilt = tilt;
+      let tilt = this.tilt;
+      if (tilt > -1) {
+        map.setTilt(tilt, {
+          noAnimation: true
+        });
+      }
+      let heading = this.heading;
+      if (heading > -1) {
+        map.setHeading(heading, {
+          noAnimation: true
+        });
+      }
       map.setCenter(new BMapGL.Point(this.position[0], this.position[1]), {
-        noAnimation: false,
-        heading: (360 - this.heading),
-        tilt: tilt
+        noAnimation: true
       });
       if (this.onlyView) {
         map.disableDragging();
@@ -180,6 +192,7 @@ export default {
         map.disableKeyboard();
         map.disablePinchToZoom();
       }
+      this.iconVisible = true;
     },
 
     stop() {
@@ -205,6 +218,11 @@ export default {
   },
   render() {
     return null;
+  },
+  beforeDestroy() {
+    this.stop();
+    this.map = null;
+    this.$bmapComponent = null;
   },
   destroyed() {
   }
