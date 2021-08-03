@@ -62,7 +62,7 @@
                 prePoint = path[this.index-1];
                 point = path[this.index];
             }
-            this.heading = 360 - bearCar(prePoint, point);
+            this.heading = bearCar(prePoint, point);
             this.position = point;
             this.index++;
             this.timer = setTimeout(() => {

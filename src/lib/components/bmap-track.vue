@@ -91,7 +91,7 @@ export default {
 
         },
         heading(newHeading) {
-          this.setHeading(newHeading, {
+          this.setHeading(360 - newHeading, {
             noAnimation: true
           });
         },
@@ -185,8 +185,8 @@ export default {
         });
       }
       let heading = this.heading;
-      if (heading > -1) {
-        map.setHeading(heading, {
+      if (heading === -1) {
+        map.setHeading(360 - heading, {
           noAnimation: true
         });
       }
