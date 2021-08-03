@@ -38,6 +38,10 @@ export default {
       type: Number,
       default: -1
     },
+    zoom: {
+      type: Number,
+      default: 19
+    },
     autoStart: {
       type: Boolean,
       default: false
@@ -93,6 +97,11 @@ export default {
         },
         tilt(newTilt) {
           this.setTilt(newTilt, {
+            noAnimation: true
+          });
+        },
+        zoom(newZoom) {
+          this.setZoom(newZoom, {
             noAnimation: true
           });
         },
@@ -181,6 +190,9 @@ export default {
           noAnimation: true
         });
       }
+      map.setZoom(this.zoom, {
+        noAnimation: true
+      });
       map.setCenter(new BMapGL.Point(this.position[0], this.position[1]), {
         noAnimation: true
       });
