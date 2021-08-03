@@ -9,8 +9,11 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmap" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-prism  :path="prism.path" :altitude="prism.altitude" :top-fill-color="prism.topFillColor" :top-fill-opacity="prism.topFillOpacity" :side-fill-color="prism.sideFillColor" :side-fill-opacity="prism.sideFillOpacity" :events="prism.events"></el-bmap-prism>
+        <el-bmap-prism  :path="prism.path" :visible="visible" :altitude="prism.altitude" :top-fill-color="prism.topFillColor" :top-fill-opacity="prism.topFillOpacity" :side-fill-color="prism.sideFillColor" :side-fill-opacity="prism.sideFillOpacity" :events="prism.events"></el-bmap-prism>
       </el-bmap>
+      <div>
+        <button @click="switchVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 
@@ -26,6 +29,7 @@
         return {
           zoom: 12,
           center: [121.5273285, 31.25515044],
+          visible: true,
           prism: {
             path: [[121.5389385, 31.21515044], [121.5389385, 31.29615044], [121.5273285, 31.21515044]],
             altitude: 500,
@@ -42,6 +46,9 @@
         };
       },
       methods: {
+        switchVisible(){
+          this.visible = !this.visible;
+        }
       }
     };
   </script>

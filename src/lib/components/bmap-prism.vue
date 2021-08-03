@@ -32,6 +32,10 @@ export default {
     enableMassClear: {
       type: Boolean
     },
+    visible: {
+      type: Boolean,
+      default: true
+    },
     events: {
       type: Object
     }
@@ -45,6 +49,9 @@ export default {
         }
       },
       handlers: {
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
+        }
       }
     };
   },

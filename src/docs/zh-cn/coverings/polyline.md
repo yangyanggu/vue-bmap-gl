@@ -9,11 +9,12 @@
   <template>
     <div class="bmap-page-container">
       <el-bmap vid="bmap" :zoom="zoom" :center="center" class="bmap-demo">
-        <el-bmap-polyline :enable-editing="polyline.enableEditing"  :path="polyline.path" :events="polyline.events"></el-bmap-polyline>
+        <el-bmap-polyline :enable-editing="polyline.enableEditing" :visible="visible" :path="polyline.path" :events="polyline.events"></el-bmap-polyline>
       </el-bmap>
 
       <div class="toolbar">
-        <button type="button" name="button" v-on:click="changeEditable">change editable</button>
+        <button type="button" name="button" v-on:click="changeEditable">切换编辑状态</button>
+        <button @click="switchVisible">切换显隐</button>
       </div>
     </div>
   </template>
@@ -30,6 +31,7 @@
         return {
           zoom: 12,
           center: [121.5273285, 31.25515044],
+          visible: true,
           polyline: {
             path: [[121.5389385, 31.21515044], [121.5389385, 31.29615044], [121.5273285, 31.21515044]],
             events: {
@@ -48,6 +50,9 @@
       methods: {
         changeEditable() {
           this.polyline.enableEditing = !this.polyline.enableEditing;
+        },
+        switchVisible(){
+          this.visible = !this.visible;
         }
       }
     };
@@ -82,6 +87,7 @@ strokeStyle | String | 线样式，实线:solid，虚线:dashed
 enableMassClear | Boolean | 是否在调用map.clearOverlays清除此覆盖物，默认为true
 enableEditing | Boolean | 多边形当前是否可编辑
 enableClicking | Boolean | 是否响应点击事件，默认为true
+visible | Boolean | 覆盖物显隐控制,默认true
 
 
 ## ref 可用方法

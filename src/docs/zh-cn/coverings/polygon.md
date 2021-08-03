@@ -11,8 +11,11 @@
       <el-bmap vid="bmap" :zoom="zoom" :bmap-manager="bmapManager" :center="center"
       ref="map"
       class="bmap-demo">
-        <el-bmap-polygon v-for="(polygon, index) in polygons" :key="index" :vid="index" :ref="`polygon_${index}`" :path="polygon.path" :enable-editing="polygon.enableEditing" :events="polygon.events"></el-bmap-polygon>
+        <el-bmap-polygon v-for="(polygon, index) in polygons" :visible="visible" :key="index" :vid="index" :ref="`polygon_${index}`" :path="polygon.path" :enable-editing="polygon.enableEditing" :events="polygon.events"></el-bmap-polygon>
       </el-bmap>
+      <div>
+        <button @click="switchVisible">切换显隐</button>
+      </div>
     </div>
   </template>
 
@@ -30,6 +33,7 @@
           zoom: 15,
           center: [121.5273285, 31.21515044],
           bmapManager: bmapManager,
+          visible: true,
           polygons: [
             {
               enableEditing: true,
@@ -43,6 +47,11 @@
               }
             }
           ]
+        }
+      },
+      methods: {
+        switchVisible(){
+          this.visible = !this.visible;
         }
       }
     };
@@ -73,6 +82,7 @@ fillOpacity | Float | 多边形填充透明度，取值范围[0,1]，0表示完�
 enableMassClear | Boolean | 是否在调用map.clearOverlays清除此覆盖物，默认为true
 enableEditing | Boolean | 多边形当前是否可编辑
 enableClicking | Boolean | 是否响应点击事件，默认为true
+visible | Boolean | 覆盖物显隐控制,默认true
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

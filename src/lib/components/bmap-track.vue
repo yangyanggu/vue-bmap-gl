@@ -91,19 +91,25 @@ export default {
 
         },
         heading(newHeading) {
-          this.setHeading(360 - newHeading, {
-            noAnimation: true
-          });
+          if (_this && _this.iconVisible && this.isLoaded()) {
+            this.setHeading(360 - newHeading, {
+              noAnimation: true
+            });
+          }
         },
         tilt(newTilt) {
-          this.setTilt(newTilt, {
-            noAnimation: true
-          });
+          if (_this && _this.iconVisible && this.isLoaded()) {
+            this.setTilt(newTilt, {
+              noAnimation: true
+            });
+          }
         },
         zoom(newZoom) {
-          this.setZoom(newZoom, {
-            noAnimation: true
-          });
+          if (_this && _this.iconVisible && this.isLoaded()) {
+            this.setZoom(newZoom, {
+              noAnimation: true
+            });
+          }
         },
         onlyView(flag) {
           if (flag) {

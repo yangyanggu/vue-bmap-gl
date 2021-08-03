@@ -43,6 +43,10 @@ export default {
       type: Boolean,
       default: false
     },
+    visible: {
+      type: Boolean,
+      default: true
+    },
     events: {
       type: Object
     }
@@ -62,6 +66,9 @@ export default {
             this.disableEditing();
             this.enableEditing();
           }
+        },
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
         }
       }
     };
