@@ -98,6 +98,13 @@ export default {
       handlers: {
         visible(flag) {
           flag === false ? this.hide() : this.show();
+        },
+        label(value) {
+          let preLabel = this.getLabel();
+          if (preLabel) {
+            this.map.removeOverlay(preLabel);
+          }
+          this.setLabel(value);
         }
       }
     };

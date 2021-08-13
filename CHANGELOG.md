@@ -1,3 +1,6 @@
+###v0.0.28
+* 解决marker修改label时会无限生成label问题
+
 ###v0.0.27
 * 多边形和折线增加visible属性
 * 修改车辆跟踪的heading
