@@ -135,6 +135,7 @@ main.js
 ```javascript
 import Vue from 'vue';
 import VueBMap from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css'
 import App from './App.vue';
 
 Vue.use(VueBMap);

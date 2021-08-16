@@ -10,6 +10,7 @@ NPM 安装：
 
 ```javascript
 import VueBMap from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css'
 
 Vue.use(VueBMap);
 VueBMap.initBMapApiLoader({
@@ -26,6 +27,7 @@ NPM 安装：
 
 ```javascript
 import VueBMap from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css'
 import { lazyBMapApiLoaderInstance } from 'vue-bmap-gl';
 
 Vue.use(VueBMap);
