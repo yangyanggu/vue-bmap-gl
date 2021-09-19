@@ -23,6 +23,7 @@
         <button @click="switchWindow(0)">Show First Window</button>
         <button @click="switchWindow(1)">Show Second Window</button>
         <button @click="changePosition()">修改弹出框位置</button>
+        <button @click="changeTitle()">修改弹出框标题</button>
       </div>
     </div>
   </template>
@@ -91,6 +92,16 @@
         changePosition() {
           let position = this.currentWindow.position;
           this.currentWindow.position = [position[0] + 0.002, position[1] - 0.002];
+        },
+        changeTitle() {
+          let position = this.currentWindow.position;
+          this.currentWindow = {
+            title: new Date().getTime() + '',
+            position: [position[0] + 0.002, position[1] - 0.002],
+            content: 'sssssssssss' + new Date().getTime(),
+            events: {},
+            visible: true
+          };
         },
       }
     };
