@@ -71,15 +71,18 @@ export default {
           this.setContent(node);
         },
         content(content) {
-          self.$bmapComponent.setContent(content);
-          self.$bmapComponent.redraw();
+          this.setContent(content);
+          this.redraw();
         },
         title(title) {
-          self.$bmapComponent.setTitle(title);
-          self.$bmapComponent.redraw();
+          this.setTitle(title);
+          this._config.title = title;
+          this.redraw();
         },
         position(value) {
-          if (self.visible !== false) self.$bmap.openInfoWindow(self.$bmapComponent, value);
+          if (self.visible !== false) {
+            self.$bmap.openInfoWindow(self.$bmapComponent, value);
+          }
         }
       }
     };

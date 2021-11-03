@@ -1,3 +1,6 @@
+###v0.0.29
+* 解决infoWindow修改时会出现title无法修改的问题
+
 ###v0.0.28
 * 解决marker修改label时会无限生成label问题
 
