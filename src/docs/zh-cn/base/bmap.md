@@ -10,7 +10,7 @@
 
   <template>
     <div class="bmap-page-container">
-      <el-bmap ref="map" :lazy="2000" :map-style-v2="darkStyle" vid="bmapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
+      <el-bmap ref="map" :lazy="2000" :map-style-v2="darkStyle" :preserve-drawing-buffer="true" vid="bmapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
       </el-bmap>
 
       <div class="toolbar">
@@ -382,6 +382,7 @@ vid | String | 组件的ID。
 bmapManager| BMapManager | 地图管理对象。
 events | Object | 事件
 lazy | Number | 延时加载地图，单位 毫秒，默认-1,不进行延时加载
+preserveDrawingBuffer | Boolean | 是否允许webgl缓存，设置为true时支持地图截图功能，默认false。地图截图方法：map.getMapScreenshot()
 
 ## 动态属性
 

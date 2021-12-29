@@ -106,6 +106,10 @@ export default {
     lazy: {
       type: Number,
       default: -1
+    },
+    preserveDrawingBuffer: {
+      type: Boolean,
+      default: false
     }
   },
 

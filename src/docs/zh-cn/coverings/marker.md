@@ -8,7 +8,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-bmap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-bmap ref="map" vid="amapDemo" :zoom="zoom" :center="center"  :preserve-drawing-buffer="true" class="amap-demo">
         <el-bmap-marker vid="component-marker" :position="componentMarker.position" ></el-bmap-marker>
         <el-bmap-marker v-for="(marker, index) in markers" :key="index" :icon="marker.icon" :visible="marker.visible" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
       </el-bmap>
@@ -18,6 +18,7 @@
         <button type="button" name="button" v-on:click="addMarker">add marker</button>
         <button type="button" name="button" v-on:click="removeMarker">remove marker</button>
         <button type="button" name="button" v-on:click="visibleMarker">切换显隐</button>
+        <button type="button" name="button" v-on:click="getMapScreenshot">截图</button>
       </div>
     </div>
   </template>
@@ -109,6 +110,10 @@
         removeMarker() {
           if (!this.markers.length) return;
           this.markers.splice(this.markers.length - 1, 1);
+        },
+        getMapScreenshot(){
+          let screen = this.$refs.map.$$getInstance().getMapScreenshot();
+          console.log(screen);
         }
       }
     };

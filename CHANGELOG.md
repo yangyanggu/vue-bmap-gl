@@ -1,3 +1,6 @@
+###v0.0.30
+* map增加preserveDrawingBuffer属性，用于支持地图截图
+
 ###v0.0.29
 * 解决infoWindow修改时会出现title无法修改的问题
 
