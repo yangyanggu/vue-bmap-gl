@@ -1,3 +1,6 @@
+###v0.0.31
+* 修复修改marker的icon时，图标无法修改问题
+
 ###v0.0.30
 * map增加preserveDrawingBuffer属性，用于支持地图截图
 

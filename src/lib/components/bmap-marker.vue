@@ -105,6 +105,9 @@ export default {
             this.map.removeOverlay(preLabel);
           }
           this.setLabel(value);
+        },
+        icon(value) {
+          this.setIcon(value);
         }
       }
     };
