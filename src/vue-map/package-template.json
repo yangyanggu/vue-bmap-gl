@@ -1,0 +1,57 @@
+{
+  "name": "vue-bmap-gl",
+  "version": "1.0.0",
+  "description": "bmap-gl vue3",
+  "keywords": [
+    "bmap-gl",
+    "bmap",
+    "map",
+    "vue3",
+    "vue"
+  ],
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./*": "./*"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "style": "dist/style.css",
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
+  "sideEffects": [
+    "dist/*",
+    "lib/packages/**/*",
+    "es/packages/**/*"
+  ],
+  "repository": "git@gitee.com:guyangyang/vue-bmap-gl.git",
+  "author": "guyangyang <407042815@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitee.com/guyangyang/vue-bmap-gl/issues"
+  },
+  "homepage": "https://vue-bmap-gl.guyixi.cn",
+  "scripts": {
+    "build": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
+    "dev": "vite",
+    "clean:dist": "rimraf dist",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "uppercamelcase": "^1.1.0"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
+  },
+  "web-types": "web-types.json"
+}
