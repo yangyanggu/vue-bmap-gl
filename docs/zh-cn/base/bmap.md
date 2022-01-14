@@ -17,9 +17,6 @@ examples/bmap/basic
 
 名称 | 类型 | 说明
 ---|---|---|
-vid | String | 组件的ID。
-bmapManager| BMapManager | 地图管理对象。
-events | Object | 事件
 lazy | Number | 延时加载地图，单位 毫秒，默认-1,不进行延时加载
 preserveDrawingBuffer | Boolean | 是否允许webgl缓存，设置为true时支持地图截图功能，默认false。地图截图方法：map.getMapScreenshot()
 
@@ -52,15 +49,6 @@ draggingCursor | String | 拖拽地图时的鼠标指针样式
 mapStyleV2 | Object | 设置个性化地图，参数为个性化配置对象，示例：{styleId:'', styleJson: {}},参数二选一使用
 trafficVisible | Boolean | 设置是否显示交通流量图层
 defaultCursor | String | 设置地图默认的鼠标指针样式。参数cursor应符合CSS的cursor属性规范
-
-## BmapManager
-
-用于获取地图实例，以及获得地图内组件的实例。
-
-名称 | 参数 | 返回类型 | 说明
----|--- | --- |---|
-getMap | | AMap.Map | 返回地图实例，注入该管理实例的组件的地图实例
-getChildInstance| vid | instance | 返回 vid 对应的组件实例
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

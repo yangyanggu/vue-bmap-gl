@@ -22,7 +22,8 @@ module.exports = defineConfig({
     "particlesJS": true,
     "expect": true,
     "sinon": true,
-    "VueBMap": true
+    "VueBMap": true,
+    "__VUEPRESS_SSR__": true
   },
   plugins: ['@typescript-eslint', 'import'],
   extends: [
