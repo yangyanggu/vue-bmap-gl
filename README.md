@@ -20,7 +20,7 @@
 
 ## 捐赠支持
 <img src="./image/zhifubao.jpg" alt="支付宝" width="270px" />
-<img src="./image/images/weixin.png" alt="微信" width="270px"/>
+<img src="./image/weixin.png" alt="微信" width="270px"/>
 
 ## 安装
 ```
