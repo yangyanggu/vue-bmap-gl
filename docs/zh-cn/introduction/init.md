@@ -6,7 +6,7 @@ title: 脚本初始化
 
 ---
 
-## 引入地图
+## 完整导入
 
 一般项目中，对于 vue-bmap-gl 的初始化只需要调用 `initBMapApiLoader` 方法即可。
 
@@ -32,6 +32,76 @@ CDN 引入：
 window.VueBMap.initBMapApiLoader({
   ak: 'YOUR_KEY',
 });
+```
+
+## 自动导入
+首先你需要安装```unplugin-vue-components``` 、 ```unplugin-auto-import``` 、 ```@vuemap/unplugin-resolver```这三款插件
+```
+npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver
+```
+然后在main.ts中导入css和进行初始化key
+```ts
+import App from './App.vue'
+import {initBMapApiLoader} from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css'
+initBMapApiLoader({
+    ak: 'YOUR_KEY'
+})
+
+createApp(App)
+    .mount('#app')
+```
+再修改配置文件，把下列代码插入到你的 Vite 或 Webpack 的配置文件中
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import {VueBmapGlResolver} from '@vuemap/unplugin-resolver'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [VueBmapGlResolver()],
+    }),
+    Components({
+      resolvers: [VueBmapGlResolver()],
+    }),
+  ]
+})
+```
+
+::: warning
+当项目中Element-Plus也使用自动导入功能时会与地图组件冲突，需要使用unplugin-vue-components@0.17.15之后的版本
+:::
+使用Element-plus的自动导入时，配置需要修改为如下：
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import {VueBmapGlResolver} from '@vuemap/unplugin-resolver'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver({
+        exclude: /^ElBmap[A-Z]*!/
+      }),VueBmapGlResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver({
+        exclude: /^ElBmap[A-Z]*!/
+      }),VueBmapGlResolver()],
+    }),
+  ]
+})
+
 ```
 
 ## Promise

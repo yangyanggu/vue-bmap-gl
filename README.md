@@ -8,6 +8,7 @@
 
 > vue-bmap-gl@next是一套基于Vue3 和百度GL的地图组件。
 > 该版本对原组件进行升级，主要适配Vue3，同时调整事件绑定形式，调整为使用v-on进行事件绑定。
+> 支持全量导入、按需导入和自动导入
 
 >vue2请使用0.x版本，对应分支vue2
 
@@ -47,6 +48,45 @@ initBMapApiLoader({
 });
 createApp(App).use(VueBMap)
 
+```
+
+## 自动导入
+首先你需要安装```unplugin-vue-components``` 、 ```unplugin-auto-import``` 、 ```@vuemap/unplugin-resolver```这三款插件
+```
+npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver
+```
+然后在main.ts中导入css和进行初始化key
+```ts
+import App from './App.vue'
+import {initBMapApiLoader} from 'vue-bmap-gl';
+import 'vue-bmap-gl/dist/style.css'
+initBMapApiLoader({
+    ak: 'YOUR_KEY'
+})
+
+createApp(App)
+    .mount('#app')
+```
+再修改配置文件，把下列代码插入到你的 Vite 或 Webpack 的配置文件中
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import {VueBmapGlResolver} from '@vuemap/unplugin-resolver'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [VueBmapGlResolver()],
+    }),
+    Components({
+      resolvers: [VueBmapGlResolver()],
+    }),
+  ]
+})
 ```
 
 ## 组件

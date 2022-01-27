@@ -8,8 +8,14 @@ title: 地图
 
 ## 基础示例
 
+### 普通示例
 ::: demo
 examples/bmap/basic
+:::
+
+### Setup示例
+::: demo
+examples/bmap/basic-setup
 :::
 
 ## 静态属性
