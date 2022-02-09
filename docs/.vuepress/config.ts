@@ -52,5 +52,6 @@ export default defineUserConfig<DefaultThemeOptions>({
         // include: ['@vuemap/vue-amap']
       }
     }
-  }
+  },
+  port: 8081
 })

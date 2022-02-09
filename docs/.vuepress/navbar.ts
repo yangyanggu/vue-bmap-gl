@@ -1,7 +1,16 @@
 export default [
   {
     text: 'vue-mapvgl',
-    link: 'https://docs.guyixi.cn/vue-mapvgl/#/'
+    children: [
+      {
+        text: 'vue3版本',
+        link: 'https://vue-mapvgl.guyixi.cn'
+      },
+      {
+        text: 'vue2版本',
+        link: 'https://docs.guyixi.cn/vue-mapvgl/#/'
+      }
+    ]
   },
   {
     text: '@vuemap/vue-amap',
