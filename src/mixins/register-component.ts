@@ -21,8 +21,6 @@ export default defineComponent({
     return {
       needInitComponents: [] as (ComponentPublicInstance & customComponent)[],
       unwatchFns: [] as WatchStopHandle[],
-      $amapComponent: null as any,
-      $parentComponent: null as any,
       propsRedirect: {},
       converters: {},
     };
