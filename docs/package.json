@@ -11,19 +11,19 @@
   "dependencies": {
     "@vueuse/core": "7.2.2",
     "clipboard-copy": "4.0.1",
-    "vue-bmap-gl": "1.0.0"
+    "vue-bmap-gl": "1.0.3"
   },
   "devDependencies": {
     "@types/markdown-it": "12.2.3",
-    "@vuepress/plugin-debug": "v2.0.0-beta.33",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.33",
-    "@vuepress/plugin-register-components": "v2.0.0-beta.33",
-    "@vuepress/plugin-search": "v2.0.0-beta.33",
+    "@vuepress/plugin-register-components": "v2.0.0-beta.48",
+    "@vuepress/client": "v2.0.0-beta.48",
+    "@vuepress/plugin-search": "v2.0.0-beta.48",
     "escape-html": "1.0.3",
     "markdown-it": "12.3.0",
     "markdown-it-container": "3.0.0",
     "prismjs": "1.25.0",
-    "vuepress": "2.0.0-beta.33",
-    "sitemap": "^7.0.0"
+    "vuepress": "2.0.0-beta.48",
+    "sitemap": "^7.0.0",
+    "vue": "^3.2.26"
   }
 }

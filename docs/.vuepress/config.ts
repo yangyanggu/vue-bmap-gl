@@ -4,10 +4,11 @@ import Sidebar from './sidebar'
 import registerPlugin from "./plugin/registerPlugin";
 import {containerPlugin} from './plugin/demoPlugin'
 import {sitemapPlugin} from './plugin/sitemapPlugin'
-import type {DefaultThemeOptions} from 'vuepress'
+import {localTheme} from "./theme";
+import { searchPlugin } from '@vuepress/plugin-search'
 
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig({
   // 站点配置
   lang: 'zh-CN',
   title: 'vue-bmap-gl',
@@ -26,8 +27,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   ],
 
   // 主题和它的配置
-  theme: '@vuepress/theme-default',
-  themeConfig: {
+  theme: localTheme({
     logo: 'https://vuejs.org/images/logo.png',
     docsDir: 'docs',
     editLink: false,
@@ -37,21 +37,12 @@ export default defineUserConfig<DefaultThemeOptions>({
     warning: '警告',
     navbar: Navbar,
     sidebar: Sidebar,
-
-  },
+  }),
   plugins: [
-    [containerPlugin],
+    containerPlugin(),
     registerPlugin,
-    ['@vuepress/register-components'],
-    [sitemapPlugin],
-    ['@vuepress/plugin-search']
+    sitemapPlugin(),
+    searchPlugin()
   ],
-  bundlerConfig: {
-    viteOptions: {
-      optimizeDeps: {
-        // include: ['@vuemap/vue-amap']
-      }
-    }
-  },
   port: 8081
 })

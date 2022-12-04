@@ -17,12 +17,19 @@ export default [
     ],
   },
   {
+    text: '图层',
+    children: [
+      '/zh-cn/component/layer/xyz-layer.md'
+    ],
+  },
+  {
     text: '遮盖物',
     children: [
       '/zh-cn/component/marker/ground-overlay.md',
       '/zh-cn/component/marker/label.md',
       '/zh-cn/component/marker/marker.md',
       '/zh-cn/component/marker/marker-3d.md',
+      '/zh-cn/component/marker/map-mask.md',
     ],
   },
   {

@@ -51,7 +51,6 @@ export default defineComponent({
   },
   methods: {
     __initComponent(options) {
-      console.log('options: ', options)
       this.$amapComponent = new BMapGL.MapMask(options.path, options);
       this.$parentComponent.addOverlay(this.$amapComponent);
     },

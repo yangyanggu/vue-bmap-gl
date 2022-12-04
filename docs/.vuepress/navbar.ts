@@ -34,11 +34,17 @@ export default [
     link: 'https://gitee.com/guyangyang/vue-bmap-gl/blob/dev/CHANGELOG.md'
   },
   {
-    text: 'gitee',
-    link: 'https://gitee.com/guyangyang/vue-bmap-gl'
+    text: '源码',
+    children: [
+      {
+        text: 'gitee',
+        link: 'https://gitee.com/guyangyang/vue-bmap-gl'
+      },
+      {
+        text: 'github',
+        link: 'https://github.com/yangyanggu/vue-bmap-gl/'
+      }
+    ]
   },
-  {
-    text: 'github',
-    link: 'https://github.com/yangyanggu/vue-bmap-gl/'
-  }
+
 ]
