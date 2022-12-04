@@ -1,3 +1,7 @@
+### 1.0.3
+* 加载JS增加离线模式
+* 增加地图掩膜、XyzLayer图层
+
 ### 1.0.2
 * 开放lazyBMapApiLoaderInstance
 

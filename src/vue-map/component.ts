@@ -12,6 +12,8 @@ import {ElBmapMenuItem} from '@vue-map/packages/MenuItem'
 import {ElBmapPolygon} from '@vue-map/packages/Polygon'
 import {ElBmapPolyline} from '@vue-map/packages/Polyline'
 import {ElBmapPrism} from '@vue-map/packages/Prism'
+import {ElBmapMapMask} from '@vue-map/packages/MapMask'
+import {ElBmapXyzLayer} from '@vue-map/packages/XyzLayer'
 
 
 import type { Plugin } from 'vue'
@@ -30,5 +32,7 @@ export default [
   ElBmapMenuItem,
   ElBmapPolygon,
   ElBmapPolyline,
-  ElBmapPrism
+  ElBmapPrism,
+  ElBmapMapMask,
+  ElBmapXyzLayer
 ] as Plugin[]

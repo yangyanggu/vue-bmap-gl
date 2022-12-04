@@ -7,7 +7,8 @@ import router from './router/index'
 
 initBMapApiLoader({
   ak: 'KKG8EDD3V4vuyPGcjsLCt16PHacQIx3P',
-  plugins: 'Lushu,TrackAnimation'
+  plugins: 'Lushu,TrackAnimation',
+  // offline: true
 })
 
 createApp(App)

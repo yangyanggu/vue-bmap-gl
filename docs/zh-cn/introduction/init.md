@@ -152,6 +152,7 @@ window.VueBMap.lazyBMapApiLoaderInstance.load().then(() => {
 ak | `String` | '' | 百度 Key |
 v | `String` | `1.0` | SDK 版本 |
 plugins | `String` | '' | BMapGLLib扩展库，以逗号隔开，可使用的扩展见下面列表。[gitee地址](https://gitee.com/mirrors_huiyan-fe/BMapGLLib)
+offline | `boolean` | `undefined` | 是否离线加载地图JS，设置为true时，需要手动在html里加上JS的加载，示例 `<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=您的密钥"></script>`
 
 ## 扩展库列表
 库名 | 描述

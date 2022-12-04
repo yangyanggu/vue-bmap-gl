@@ -15,6 +15,8 @@ declare module '@vue/runtime-core' {
     ElBmapPolygon: typeof import('vue-bmap-gl')['ElBmapPolygon'],
     ElBmapPolyline: typeof import('vue-bmap-gl')['ElBmapPolyline'],
     ElBmapPrism: typeof import('vue-bmap-gl')['ElBmapPrism'],
+    ElBmapMapMask: typeof import('vue-bmap-gl')['ElBmapMapMask'],
+    ElBmapXyzLayer: typeof import('vue-bmap-gl')['ElBmapXyzLayer'],
   }
 }
 

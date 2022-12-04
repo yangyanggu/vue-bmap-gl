@@ -24,6 +24,12 @@ export default class AMapAPILoader {
 
   load() {
     if (this._scriptLoadingPromise) return this._scriptLoadingPromise;
+    if(this._config.offline){
+      this._scriptLoadingPromise = new Promise(resolve => {
+        resolve()
+      })
+      return this._scriptLoadingPromise
+    }
     const script = this._document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
@@ -55,7 +61,7 @@ export default class AMapAPILoader {
               (Array.isArray(config[k]) && config[k].length > 0);
       })
       .map(k => {
-        let v = config[k];
+        const v = config[k];
         if (Array.isArray(v)) return { key: k, value: v.join(',')};
         return {key: k, value: v};
       })
@@ -69,7 +75,7 @@ export default class AMapAPILoader {
       callback();
       return;
     }
-    let plugins = this._config.plugins.split(',');
+    const plugins = this._config.plugins.split(',');
     if (plugins.length > 0) {
       let pluginsLength = plugins.length;
       let loadedNumber = 0;
@@ -79,7 +85,7 @@ export default class AMapAPILoader {
           pluginsLength--;
           return;
         }
-        let src = this._getPluginSrc(name);
+        const src = this._getPluginSrc(name);
         const script = this._document.createElement('script');
         script.type = 'text/javascript';
         script.src = src;

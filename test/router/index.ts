@@ -13,21 +13,25 @@ import Menu from '../views/Menu.vue'
 import Polygon from '../views/Polygon.vue'
 import Polyline from '../views/Polyline.vue'
 import Prism from "../views/Prism.vue";
+import MapMask from "../views/MapMask.vue";
+import XyzLayer from "../views/XyzLayer.vue";
 
-const routes = [
-  {path: '/', component: Map},
-  {path: '/bezierCurve', component: BezierCurve},
-  {path: '/circle', component: Circle},
-  {path: '/groundOverlay', component: GroundOverlay},
-  {path: '/infoWindow', component: InfoWindow},
-  {path: '/infoWindowCustom', component: InfoWindowCustom},
-  {path: '/label', component: Label},
-  {path: '/marker', component: Marker},
-  {path: '/marker3d', component: Marker3d},
-  {path: '/menu', component: Menu},
-  {path: '/polygon', component: Polygon},
-  {path: '/polyline', component: Polyline},
-  {path: '/prism', component: Prism},
+export const routes = [
+  {path: '/',name: '地图', component: Map},
+  {path: '/bezierCurve',name: '贝塞尔曲线' , component: BezierCurve},
+  {path: '/circle',name: '圆' , component: Circle},
+  {path: '/groundOverlay',name: '地面叠加层' , component: GroundOverlay},
+  {path: '/infoWindow',name: '信息框',  component: InfoWindow},
+  {path: '/infoWindowCustom',name: '自定义信息框', component: InfoWindowCustom},
+  {path: '/label',  name: '文本', component: Label},
+  {path: '/marker', name: '标号', component: Marker},
+  {path: '/marker3d', name: '3D标号', component: Marker3d},
+  {path: '/menu', name: '菜单', component: Menu},
+  {path: '/polygon', name: '多边形', component: Polygon},
+  {path: '/polyline', name: '折线', component: Polyline},
+  {path: '/prism', name: '3D棱柱', component: Prism},
+  {path: '/mapMask', name: '掩膜',component: MapMask},
+  {path: '/xyzLayer', name: 'XYZLayer' ,component: XyzLayer},
 ]
 
 export default createRouter({
