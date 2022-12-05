@@ -24,11 +24,11 @@ export default class AMapAPILoader {
 
   load() {
     if (this._scriptLoadingPromise) return this._scriptLoadingPromise;
-    if(this._config.offline){
+    if (this._config.offline) {
       this._scriptLoadingPromise = new Promise(resolve => {
-        resolve()
-      })
-      return this._scriptLoadingPromise
+        resolve();
+      });
+      return this._scriptLoadingPromise;
     }
     const script = this._document.createElement('script');
     script.type = 'text/javascript';
