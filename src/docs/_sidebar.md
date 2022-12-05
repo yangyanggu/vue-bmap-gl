@@ -1,4 +1,6 @@
-[![Fork me on Gitee](https://gitee.com/guyangyang/vue-bmap-gl/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-bmap-gl)
+[![Fork me on Gitee](https://gitee.com/guyangyang/vue-bmap-gl/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-bmap-gl)<br/>
+[![npm package](https://img.shields.io/npm/v/vue-bmap-gl.svg)](https://www.npmjs.org/package/vue-bmap-gl)
+[![npm package](https://img.shields.io/static/v1?label=更新日期&message=2022-12-05&color=green)](https://www.npmjs.org/package/vue-bmap-gl)
 - 友情链接
   - [vue-mapvgl](https://docs.guyixi.cn/vue-mapvgl/)
   - [vue-amap](https://docs.guyixi.cn/vue-amap/)
@@ -9,9 +11,12 @@
  - [兼容百度地图GL SDK](zh-cn/introduction/compatible.md)
  - [更新日志](https://gitee.com/guyangyang/vue-bmap-gl/blob/master/CHANGELOG.md)
  - [捐赠支持](zh-cn/other/donation.md)
-- 基础
+- 地图
  - [地图](zh-cn/base/bmap.md)
  - [获取map实例对象](zh-cn/base/get-bmap-instance.md)
+
+- 图层
+ - [XYZLayer](zh-cn/layer/xyz-layer.md)
 
 - 遮盖物
  - [点坐标](zh-cn/coverings/marker.md)
@@ -23,6 +28,7 @@
  - [文本标注](zh-cn/coverings/label.md)
  - [贝塞尔曲线](zh-cn/coverings/bezier-curve.md)
  - [3D棱柱](zh-cn/coverings/prism.md)
+ - [掩膜](zh-cn/coverings/map-mask.md)
 - 窗体
   - [信息窗体](zh-cn/windows/info-window.md)
   - [可自定义信息窗体](zh-cn/windows/info-window-custom.md)

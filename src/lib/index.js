@@ -22,6 +22,8 @@ import BMapMenu from './components/bmap-menu';
 import BMapMenuItem from './components/bmap-menu-item';
 import BMapTrack from './components/bmap-track';
 import BMapInfoWindowCustom from './components/bmap-info-window-custom.vue';
+import BmapMapMask from './components/bmap-map-mask.vue';
+import BmapXyzLayer from './components/bmap-xyz-layer.vue';
 /* import AMapSearchBox from './components/amap-search-box.vue';
 import AMapGroupImage from './components/amap-ground-image.vue';
 import AMapCircleMarker from './components/amap-circle-marker.vue';
@@ -47,7 +49,9 @@ let components = [
   BMapMenu,
   BMapMenuItem,
   BMapTrack,
-  BMapInfoWindowCustom
+  BMapInfoWindowCustom,
+  BmapMapMask,
+  BmapXyzLayer
   /* AMapSearchBox,
   AMapCircle,
   AMapGroupImage,

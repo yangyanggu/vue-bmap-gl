@@ -90,18 +90,25 @@ export default {
 
     registerEvents() {
       this.setEditorEvents && this.setEditorEvents();
-      if (!this.$options.propsData) return;
-      if (this.$options.propsData.events) {
+      if (this.$options.propsData && this.$options.propsData.events) {
         for (let eventName in this.events) {
           eventHelper.addListener(this.$bmapComponent, eventName, this.events[eventName]);
         }
+        if (this.$options.propsData.onceEvents) {
+          for (let eventName in this.onceEvents) {
+            eventHelper.addListenerOnce(this.$bmapComponent, eventName, this.onceEvents[eventName]);
+          }
+        }
+      } else {
+        this.registerEventsFromListeners();
       }
 
-      if (this.$options.propsData.onceEvents) {
-        for (let eventName in this.onceEvents) {
-          eventHelper.addListenerOnce(this.$bmapComponent, eventName, this.onceEvents[eventName]);
-        }
-      }
+    },
+    registerEventsFromListeners() {
+      let $listeners = this.$listeners;
+      Object.keys($listeners).forEach(key => {
+        eventHelper.addListener(this.$bmapComponent, key, $listeners[key]);
+      });
     },
 
     unregisterEvents() {

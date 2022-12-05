@@ -9,7 +9,7 @@
   <template>
     <div class="amap-page-container">
       <el-bmap ref="map" vid="amapDemo" :zoom="zoom" :center="center"  :preserve-drawing-buffer="true" class="amap-demo">
-        <el-bmap-marker vid="component-marker" :position="componentMarker.position" ></el-bmap-marker>
+        <el-bmap-marker vid="component-marker" :position="componentMarker.position" @click="clickMarker"></el-bmap-marker>
         <el-bmap-marker v-for="(marker, index) in markers" :key="index" :icon="marker.icon" :visible="marker.visible" :position="marker.position" :title="marker.title" :label="marker.label" :events="marker.events" :vid="index" :enable-dragging="marker.enableDragging"></el-bmap-marker>
       </el-bmap>
       <div class="toolbar">
@@ -114,6 +114,9 @@
         getMapScreenshot(){
           let screen = this.$refs.map.$$getInstance().getMapScreenshot();
           console.log(screen);
+        },
+        clickMarker(e){
+          console.log('click marker: ', e)
         }
       }
     };

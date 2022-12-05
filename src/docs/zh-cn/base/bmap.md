@@ -10,7 +10,7 @@
 
   <template>
     <div class="bmap-page-container">
-      <el-bmap ref="map" :lazy="2000" :map-style-v2="darkStyle" :preserve-drawing-buffer="true" vid="bmapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" :events="events" class="bmap-demo">
+      <el-bmap ref="map" :lazy="2000" :map-style-v2="darkStyle" :preserve-drawing-buffer="true" vid="bmapDemo" :min-zoom="10" :max-zoom="22" :tilt="tilt" :heading="heading" :bmap-manager="bmapManager" :center="center" :zoom="zoom" @click="clickMap" class="bmap-demo">
       </el-bmap>
 
       <div class="toolbar">
@@ -366,6 +366,10 @@
                 this.center = [(this.center[0]+0.0001), this.center[1]];
                 this.panMap();
             },1000);
+        },
+        clickMap(e) {
+          alert('map clicked');
+          console.log('click map: ', e)
         }
       }
     };
