@@ -64,7 +64,7 @@ export default defineComponent({
   },
   unmounted() {
     if (this.$amapComponent) {
-      this.$parentComponent.removeaTileLayer(this.$amapComponent);
+      this.$parentComponent.removeTileLayer(this.$amapComponent);
       this.$amapComponent = null;
     }
   },
