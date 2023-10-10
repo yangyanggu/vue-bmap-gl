@@ -6,6 +6,8 @@
 [![NPM](https://img.shields.io/npm/l/vue-bmap-gl)](https://gitee.com/guyangyang/vue-bmap-gl)
 [![star](https://gitee.com/guyangyang/vue-bmap-gl/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-bmap-gl/stargazers)
 
+  :x: **由于百度需要开源文档认证，组件库停止维护，后续文档也会同步下线，有需要的可以下载代码本地运行查看文档，百度key也会失效，可以更换为自己的key** 
+
 > vue-bmap-gl@next是一套基于Vue3 和百度GL的地图组件。
 > 该版本对原组件进行升级，主要适配Vue3，同时调整事件绑定形式，调整为使用v-on进行事件绑定。
 > 支持全量导入、按需导入和自动导入
