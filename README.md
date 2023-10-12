@@ -18,8 +18,7 @@
 觉得有用可以给个star
 ```
 
-## 群号
-![avatar](./image/vue-mapvgl.png)
+:q
 
 ## 捐赠支持
 <img src="./image/zhifubao.jpg" alt="支付宝" width="270px" />
